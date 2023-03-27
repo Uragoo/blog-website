@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Work Sans', sans-serif;
+    background: #f2f2f2;
+}
+header {
+    background: #0b7cac;
+    height: 66px;
+}
+header * {
+    color: white;
+}
+header .logo {
+    float: left;
+    height: 66px;
+    margin-left: 2em;
+    /* border: 1px solid red; */
+}
+header .logo-title {
+    margin: 12px;
+    font-family: 'Merriweather', serif;
+}
+header .logo-title span {
+    color: #00e1ff;
+}
+header ul {
+    float: right;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    /* border: 1px solid red; */
+}
+.displaying {
+    max-height: 100em;
+}
+header ul li {
+    float: left;
+    position: relative;
+}
+header ul li a i.fa.fa-chevron-down {
+    font-size: 0.8em;
+}
+header ul li a {
+    display: block;
+    padding: 22px;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+header ul li a:hover {
+    background: #13aff0;
+    transition: .5s;
+}
+header ul li ul {
+    position: absolute;
+    top: 66px;
+    right: 0px;
+    width: 180px;
+    display: none;
+}
+header ul li:hover ul {
+    display: block;
+}
+header ul li ul li {
+    width: 100%;
+    text-align: center;
+}
+header ul li ul li a {
+    padding: 10px;
+    color: #222222;
+    background-color: #ffffff;
+}
+header ul li ul li a:hover {
+    background: #e6dfdf;
+}
+header ul li ul li a.logout {
+    color: red;
+}
+header .menu-icon {
+    display: none;
+}
+
+
+/* Responsivity of the website */
+/* If the max width of the device is 750px or less */
+@media only screen and (max-width: 750px) {
+    header {
+        position: relative;
+    }
+    header ul {
+        width: 100%;
+        background-color: #0f90c8;
+        max-height: 0px;
+        overflow: hidden;
+    }
+    header ul li {
+        width: 100%;
+    }
+    header ul li ul {
+        position: static;
+        display: block;
+        width: 100%;
+    }
+    header ul li ul li a{
+        background: #0f90c8;
+        color: white;
+        text-align: left;
+        padding-left: 50px;
+    }
+    header ul li ul li a:hover{
+        background: #13aff0;
+    }
+    header .menu-icon {
+        position: absolute;
+        display: block;
+        right: 20px;
+        top: 15px;
+        font-size: 2em;
+    }
+}
