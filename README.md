@@ -1,1 +1,1 @@
-# A blog website for a school project
+# A blog website about Studio Ghibli for a school project
