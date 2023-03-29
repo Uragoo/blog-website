@@ -1,3 +1,4 @@
+/* Global styles */
 * {
     box-sizing: border-box;
 }
@@ -7,6 +8,15 @@ body {
     font-family: 'Work Sans', sans-serif;
     background: #f2f2f2;
 }
+h1, h2, h3, h4 {
+    font-family: 'Merriweather', serif;
+    margin: 5px;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+/* Header styles */
 header {
     background: #0b7cac;
     height: 66px;
@@ -60,6 +70,7 @@ header ul li ul {
     right: 0px;
     width: 180px;
     display: none;
+    z-index: 88888;
 }
 header ul li:hover ul {
     display: block;
@@ -83,6 +94,66 @@ header .menu-icon {
     display: none;
 }
 
+.page-wrap a:hover {
+    color: #0b7cac;
+}
+/* Carousel styles */
+.carousel {
+    /* border: solid 1px red; */
+    position: relative;
+}
+.carousel .carousel-title {
+    text-align: center;
+    margin: 30px auto;
+}
+.carousel .next {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    font-size: 2em;
+    color: #0b7cac;
+    cursor: pointer;
+}
+.carousel .post-wrap {
+    width: 80%;
+    height: 350px;
+    margin: 0px auto;
+    overflow: hidden;
+    /* border: solid 1px red; */
+    padding: 10px 0px 10px 0px;
+}
+.carousel .post-wrap .post {
+    display: inline-block;
+    width: 300px;
+    height: 330px;
+    margin: 0px 10px;
+    /* border: solid 1px blue; */
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 1rem 1rem 1rem -1rem #9e9e9e33;
+}
+.carousel .post-wrap .post .post-image {
+    width: 100%;
+    height: 220px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.carousel .post-wrap .post .post-info {
+    height: 130px;
+    /* border: solid 1px purple; */
+    padding: 0px 5px;
+}
+.carousel .post-wrap .post .post-info i {
+    font-style: normal;
+}
+.carousel .previous {
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    font-size: 2em;
+    color: #0b7cac;
+    cursor: pointer;
+}
 
 /* Responsivity of the website */
 /* If the max width of the device is 750px or less */
