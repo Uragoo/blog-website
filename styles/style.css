@@ -32,6 +32,19 @@ a {
     display: block;
     clear: both;
 }
+.text-input {
+    padding: .7rem 1rem;
+    display: block;
+    width: 100%;
+    border-radius: 5px;
+    outline: none;
+    color: #494949;
+    line-height: 1.5rem;
+    font-family: 'Lora', serif;
+    border: solid 1px #aaaaaa;
+    font-size: 1.1em;
+}
+
 /* Header styles */
 header {
     background: #0b7cac;
@@ -220,8 +233,36 @@ header .menu-icon {
 .content .sidebar {
     width: 30%;
     float: left;
-    border: solid 1px purple;
+    /* border: solid 1px purple; */
     height: 300px;
+}
+.content .sidebar .section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.content .sidebar .section .section-title {
+    margin: 10px 0px 10px 0px;
+}
+.content .sidebar .section.search {
+    margin-top: 80px;
+}
+.content .sidebar .section.topics ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    border-top: solid 1px #aaaaaa;
+}
+.content .sidebar .section.topics ul li a {
+    border-bottom: solid 1px #aaaaaa;
+    display: block;
+    padding: 15px 0px 15px 0px;
+    transition: all 0.3s;
+}
+.content .sidebar .section.topics ul li a:hover {
+    padding-left: 15px;
+    transition: all 0.3s;
 }
 
 /* Responsivity of the website */
