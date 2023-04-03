@@ -6,8 +6,19 @@ html, body {
     padding: 0px;
     margin: 0px;
     font-family: 'Work Sans', sans-serif;
-    background: #f2f2f2;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
     height: 100%;
+}
+#MainContainer {
+	margin: 0px auto;
+	width: 80%;
+	border-width: 0px 0px; 
+	border-style: solid; 
+	border-color:rgb(28, 68, 35);;
+	padding: 0px 0px;
+	background-color:rgba(255, 255, 255, 0.753);
 }
 h1, h2, h3, h4 {
     font-family: 'Merriweather', serif;
@@ -51,7 +62,7 @@ a {
 
 /* Header styles */
 header {
-    background: #0b7cac;
+    background:rgb(23, 121, 41); 
     height: 66px;
 }
 header * {
@@ -68,7 +79,7 @@ header .logo-title {
     font-family: 'Merriweather', serif;
 }
 header .logo-title span {
-    color: #00e1ff;
+    color: rgb(142, 241, 160); 
 }
 header ul {
     float: right;
@@ -94,7 +105,7 @@ header ul li a {
     font-size: 1.1em;
 }
 header ul li a:hover {
-    background: #13aff0;
+    background: rgb(76, 196, 98); 
     transition: .5s;
 }
 header ul li ul {
@@ -293,7 +304,7 @@ header .menu-icon {
     color: white;
 }
 .footer .footer-content .about h1 span {
-    color: #00e1ff;
+    color: rgb(142, 241, 160);
 }
 .footer .footer-content .about .contact-informations span {
     display: block;
@@ -389,3 +400,35 @@ header .menu-icon {
         font-size: 2em;
     }
 }
+
+/**
+*Code for handling the fade in effect
+*To ensure cross-browser compatibility we repeat the code for fadeIn multiple times for the different vendor prefixes
+*/
+.fade-in{
+	animation: fadeIn 1.5s;
+	-webkit-animation: fadeIn 1.5s;
+	-moz-animation: fadeIn 1.5s;
+	-o-animation: fadeIn 1.5s;
+	-ms-animation: fadeIn 1.5s;
+}
+@keyframes fadeIn {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+  }
+  @-moz-keyframes fadeIn {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+  } 
+  @-webkit-keyframes fadeIn {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+  }
+  @-o-keyframes fadeIn {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+  }
+  @-ms-keyframes fadeIn {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+  }
