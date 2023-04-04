@@ -275,8 +275,8 @@ header .menu-icon {
     border-radius: 5px;
 }
 .content .main-content.post img {
-    height: 400;
-    width: 850px;
+    height: 100%;
+    width: 100%;
     margin-bottom: 20px;
 }
 .content .main-content.post .post-title {
@@ -289,7 +289,6 @@ header .menu-icon {
     width: 30%;
     float: left;
     /* border: solid 1px purple; */
-    height: 300px;
 }
 .content .sidebar.post {
     padding: 0px 10px;
@@ -322,12 +321,12 @@ header .menu-icon {
     padding-left: 15px;
     transition: all 0.3s;
 }
-.content .sidebar.post .section.popular-posts .post {
+.section.popular-posts .post {
     border-top: solid 1px #aaaaaa;
     margin-top: 10px;
     padding-top: 10px;
 }
-.content .sidebar.post .section.popular-posts .post img {
+.section.popular-posts .post img {
     height: 60px;
     width: 80px;
     float: left;
@@ -416,6 +415,9 @@ header .menu-icon {
     margin-left: 10px;
     transition: .3s;
 }
+.footer .footer-content .contact {
+    padding-bottom: 90px;
+}
 .footer .footer-content .contact .contact-input {
     background: #3d3d3d;
     color: #aaaaaa;
@@ -440,8 +442,66 @@ header .menu-icon {
 }
 
 /* Responsivity of the website */
-/* If the max width of the device is 750px or less */
-@media only screen and (max-width: 750px) {
+/* If the max width of the device is 1060px or less */
+@media only screen and (max-width: 1300px) {
+    .authentication {
+        width: 40%;
+    }
+}
+/* If the max width of the device is 1060px or less */
+@media only screen and (max-width: 1060px) {
+    .content .main-content.post {
+        width: 100%;
+        padding: 10px;
+    }
+    .content .main-content.post .post {
+        width: 100%;
+    }
+    .content .sidebar.post {
+        width: 100%;
+        padding: 10px 0px;
+    }
+    .authentication {
+        width: 40%;
+    }
+}
+/* If the max width of the device is 935px or less */
+@media only screen and (max-width: 935px) {
+    .content {
+        width: 100%;
+    }
+    .content .main-content {
+        width: 100%;
+        padding: 10px;
+    }
+    .content .main-content .post {
+        width: 100%;
+    }
+    .content .sidebar {
+        width: 100%;
+        padding: 10px;
+    }
+    .content .sidebar .section.search {
+        margin-top: 20px;
+    }
+    .authentication {
+        width: 50%;
+    }
+    .footer {
+        height: auto;
+    }
+    .footer .footer-content {
+        height: auto;
+        flex-direction: column;
+    }
+    .footer .footer-content .contact .button {
+        width: 100%;
+        font-size: 1.1em;
+    }
+
+}
+/* If the max width of the device is 785px or less */
+@media only screen and (max-width: 785px) {
     header {
         position: relative;
     }
@@ -474,6 +534,42 @@ header .menu-icon {
         right: 20px;
         top: 15px;
         font-size: 2em;
+    }
+    .main-content.wrap {
+        padding: 10px;
+    }
+    .authentication {
+        width: 60%;
+    }
+}
+/* If the max width of the device is 600px or less */
+@media only screen and (max-width: 600px) {
+    .carousel .previous {
+        left: 10px;
+    }
+    .carousel .next {
+        right: 10px;
+    }
+    .content .main-content .post {
+        height: auto;
+    }
+    .content .main-content .post .post-image {
+        width: 100%;
+    }
+    .content .main-content .post .post-preview {
+        width: 100%;
+    }
+    .content .main-content .post .post-preview .button {
+        position: static;
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+    .content .main-content.post {
+        padding: 10px 20px;
+    }
+    .authentication {
+        width: 90%;
     }
 }
 
