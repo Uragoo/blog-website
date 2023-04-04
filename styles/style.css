@@ -60,6 +60,26 @@ a {
     line-height: 1.3rem;
 }
 
+/* Succes/Error messages style */
+.message {
+    width: 100%;
+    margin: 5px auto;
+    padding: 8px;
+    border-radius: 5px;
+    list-style: none;
+    text-align: center;
+}
+.success {
+    color: #3a6e3a;
+    border: solid 1px #3a6e3a;
+    background: #bcf5bc;
+}
+.error {
+    color: #884b4b;
+    border: solid 1px #884b4b;
+    background: #f5bcbc;
+}
+
 /* Header styles */
 header {
     background:rgb(23, 121, 41); 
@@ -254,6 +274,11 @@ header .menu-icon {
     font-size: 1.1em;
     border-radius: 5px;
 }
+.content .main-content.post img {
+    height: 400;
+    width: 850px;
+    margin-bottom: 20px;
+}
 .content .main-content.post .post-title {
     text-align: center;
     margin-bottom: 30px;
@@ -308,6 +333,31 @@ header .menu-icon {
     float: left;
     margin-right: 10px;
 }
+
+/* Authentication pages styles */
+.authentication {
+    width: 30%;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+}
+.authentication .form-title {
+    text-align: center;
+}
+.authentication form div {
+    margin-bottom: 10px;
+}
+.authentication form p {
+    text-align: center;
+}
+.authentication form p a {
+    text-decoration: underline;
+}
+.authentication form p a:hover {
+    color: rgb(76, 196, 98)
+}
+
 
 /* Footer styles */
 .footer {
