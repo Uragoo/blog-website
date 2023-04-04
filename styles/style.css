@@ -30,14 +30,14 @@ a {
 }
 .button {
     padding: .5rem 1rem;
-    background: #0b7cac;
+    background: rgb(23, 121, 41);
     color: white;
     border: solid 1px transparent;
     border-radius: .25rem;
 }
 .button:hover {
     color: white !important;
-    background-color: #0a6891;
+    background-color: rgb(21, 108, 37);
 }
 .clear::after {
     content: '';
@@ -142,7 +142,7 @@ header .menu-icon {
     min-height: 100%;
 }
 .page-wrap a:hover {
-    color: #0b7cac;
+    color: rgb(23, 121, 41);
 }
 /* Carousel styles */
 .carousel {
@@ -158,7 +158,7 @@ header .menu-icon {
     top: 50%;
     right: 30px;
     font-size: 2em;
-    color: #0b7cac;
+    color: rgb(23, 121, 41);
     cursor: pointer;
 }
 .carousel .post-wrap {
@@ -198,7 +198,7 @@ header .menu-icon {
     top: 50%;
     left: 30px;
     font-size: 2em;
-    color: #0b7cac;
+    color: rgb(23, 121, 41);
     cursor: pointer;
 }
 
@@ -238,21 +238,36 @@ header .menu-icon {
     position: absolute;
     bottom: 10px;
     right: 10px;
-    border: solid 1px #0a6891;
-    color: #0a6891 !important;
+    border: solid 1px rgb(23, 121, 41);
+    color: rgb(23, 121, 41) !important;
     background: transparent;
     border-radius: 0px;
 }
 .content .main-content .post .post-preview .button:hover {
-    background-color: #0b7cac;
+    background-color: rgb(23, 121, 41);
     color: white !important;
     transition: .25s;
+}
+.content .main-content.post {
+    background: white;
+    padding: 20px 50px;
+    font-size: 1.1em;
+    border-radius: 5px;
+}
+.content .main-content.post .post-title {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: solid 1px #aaaaaa;
 }
 .content .sidebar {
     width: 30%;
     float: left;
     /* border: solid 1px purple; */
     height: 300px;
+}
+.content .sidebar.post {
+    padding: 0px 10px;
 }
 .content .sidebar .section {
     background-color: white;
@@ -281,6 +296,17 @@ header .menu-icon {
 .content .sidebar .section.topics ul li a:hover {
     padding-left: 15px;
     transition: all 0.3s;
+}
+.content .sidebar.post .section.popular-posts .post {
+    border-top: solid 1px #aaaaaa;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+.content .sidebar.post .section.popular-posts .post img {
+    height: 60px;
+    width: 80px;
+    float: left;
+    margin-right: 10px;
 }
 
 /* Footer styles */
@@ -371,7 +397,7 @@ header .menu-icon {
     }
     header ul {
         width: 100%;
-        background-color: #0f90c8;
+        background-color: rgb(23, 121, 41);
         max-height: 0px;
         overflow: hidden;
     }
@@ -384,13 +410,13 @@ header .menu-icon {
         width: 100%;
     }
     header ul li ul li a{
-        background: #0f90c8;
+        background: rgb(23, 121, 41);
         color: white;
         text-align: left;
         padding-left: 50px;
     }
     header ul li ul li a:hover{
-        background: #13aff0;
+        background: rgb(76, 196, 98);
     }
     header .menu-icon {
         position: absolute;

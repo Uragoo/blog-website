@@ -10,7 +10,7 @@
     <!-- Link to css file -->
     <link rel="stylesheet" href="styles/style.css">
     <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
-    <title>Ghiblog</title>
+    <title>Post</title>
 </head>
 <body background="./img/background.jpg">
     <!-- Class used to make page fade into view -->
@@ -49,115 +49,55 @@
                 </ul>
             </header>
 
-            <!-- Div tag that will wrap the entire content of the page -->
+            <!-- Div tag that wrap the entire content of the page -->
             <div class="page-wrap">
-                <!-- Div tag that contains the carousel of popular posts -->
-                <div class="carousel">
-                    <h1 class="carousel-title">Popular Posts</h1>
-                    <i class="fa-solid fa-chevron-left previous"></i>
-                    <!-- Div tag that contains the popular posts -->
-                    <div class="post-wrap">
-                        <!-- Div tags that contain the posts themselves -->
-                        <div class="post">
-                            <img src="img/ghibli-studios.PNG" alt="ghibli-presentation" class="post-image">
-                            <div class="post-info">
-                                <h3><a href="#">What is Studio Ghibli ?</a></h3>
-                                <i class="far fa-user"> Theo</i>
-                                &nbsp;
-                                <i class="far fa-calendar"> Mar 29, 2023</i>
-                            </div>
-                        </div>
-                        <div class="post">
-                            <img src="img/my-neighbor-totoro.jpg" alt="totoro" class="post-image">
-                            <div class="post-info">
-                                <h3><a href="#">My Neighbor Totoro</a></h3>
-                                <i class="far fa-user"> Theo</i>
-                                &nbsp;
-                                <i class="far fa-calendar"> Mar 29, 2023</i>
-                            </div>
-                        </div>
-                        <div class="post">
-                            <img src="img/howls-moving-castle.jpg" alt="howls-moving-castle" class="post-image">
-                            <div class="post-info">
-                                <h3><a href="#">Howl's Moving Castle</a></h3>
-                                <i class="far fa-user"> Theo</i>
-                                &nbsp;
-                                <i class="far fa-calendar"> Mar 29, 2023</i>
-                            </div>
-                        </div>
-                        <div class="post">
-                            <img src="img/spirited-away.avif" alt="spirited-away" class="post-image">
-                            <div class="post-info">
-                                <h3><a href="#">Spirited Away</a></h3>
-                                <i class="far fa-user"> Theo</i>
-                                &nbsp;
-                                <i class="far fa-calendar"> Mar 29, 2023</i>
-                            </div>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right next"></i>
-                </div>
-
                 <!-- Div tag that contains the content of the page -->
                 <div class="content clear">
                     <!-- Div tag that contains the main content of the page -->
-                    <div class="main-content">
-                        <h1 class="recent-post-title">Recent Posts</h1>
-                        <!-- Div tag that contains the post itself -->
-                        <div class="post">
-                            <img src="img/ghibli-studios.PNG" alt="ghibli-presentation" class="post-image">
-                            <div class="post-preview">
-                                <h2><a href="#">What is Studio Ghibli ?</a></h2>
-                                <i class="far fa-user"> Theo</i>
-                                &nbsp;
-                                <i class="far calendar"> Mar 30, 2023</i>
-                                <p class="preview-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed molestie nulla. Pellentesque blandit mauris magna, et pretium risus elementum.</p>
-                                <a href="#" class="button">Read More</a>
-                            </div>
-                        </div>
-                        <div class="post">
-                            <img src="img/my-neighbor-totoro.jpg" alt="totoro" class="post-image">
-                            <div class="post-preview">
-                                <h2><a href="#">My Neighbor Totoro</a></h2>
-                                <i class="far fa-user"> Theo</i>
-                                &nbsp;
-                                <i class="far calendar"> Mar 30, 2023</i>
-                                <p class="preview-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed molestie nulla. Pellentesque blandit mauris magna, et pretium risus elementum.</p>
-                                <a href="#" class="button">Read More</a>
-                            </div>
-                        </div>
-                        <div class="post">
-                            <img src="img/howls-moving-castle.jpg" alt="howls-moving-castle" class="post-image">
-                            <div class="post-preview">
-                                <h2><a href="#">Howl's Moving Castle</a></h2>
-                                <i class="far fa-user"> Theo</i>
-                                &nbsp;
-                                <i class="far calendar"> Mar 30, 2023</i>
-                                <p class="preview-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed molestie nulla. Pellentesque blandit mauris magna, et pretium risus elementum.</p>
-                                <a href="#" class="button">Read More</a>
-                            </div>
-                        </div>
-                        <div class="post">
-                            <img src="img/spirited-away.avif" alt="spirited-away" class="post-image">
-                            <div class="post-preview">
-                                <h2><a href="#">Spirited Away</a></h2>
-                                <i class="far fa-user"> Theo</i>
-                                &nbsp;
-                                <i class="far calendar"> Mar 30, 2023</i>
-                                <p class="preview-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed molestie nulla. Pellentesque blandit mauris magna, et pretium risus elementum.</p>
-                                <a href="#" class="button">Read More</a>
-                            </div>
+                    <div class="main-content post">
+                        <h1 class="post-title">What is Studio Ghibli ?</h1>
+                        <!-- Div tag that contains the content of the post -->
+                        <div class="post-content">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque harum dolorem sit quasi illum cumque?</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum error ut aut inventore maiores quis atque ducimus nobis voluptatibus quidem sint magnam debitis necessitatibus, neque consequuntur corrupti non dolorum ipsam!</p>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque facilis, aliquid accusantium natus laboriosam quos repudiandae voluptatem quidem hic laborum totam. Atque nesciunt dolore soluta deserunt cum reiciendis maiores beatae hic, ratione amet ipsam eaque quisquam harum distinctio recusandae ut!</p>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, vel?</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque harum dolorem sit quasi illum cumque?</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum error ut aut inventore maiores quis atque ducimus nobis voluptatibus quidem sint magnam debitis necessitatibus, neque consequuntur corrupti non dolorum ipsam!</p>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque facilis, aliquid accusantium natus laboriosam quos repudiandae voluptatem quidem hic laborum totam. Atque nesciunt dolore soluta deserunt cum reiciendis maiores beatae hic, ratione amet ipsam eaque quisquam harum distinctio recusandae ut!</p>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, vel?</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque harum dolorem sit quasi illum cumque?</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum error ut aut inventore maiores quis atque ducimus nobis voluptatibus quidem sint magnam debitis necessitatibus, neque consequuntur corrupti non dolorum ipsam!</p>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque facilis, aliquid accusantium natus laboriosam quos repudiandae voluptatem quidem hic laborum totam. Atque nesciunt dolore soluta deserunt cum reiciendis maiores beatae hic, ratione amet ipsam eaque quisquam harum distinctio recusandae ut!</p>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, vel?</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque harum dolorem sit quasi illum cumque?</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum error ut aut inventore maiores quis atque ducimus nobis voluptatibus quidem sint magnam debitis necessitatibus, neque consequuntur corrupti non dolorum ipsam!</p>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque facilis, aliquid accusantium natus laboriosam quos repudiandae voluptatem quidem hic laborum totam. Atque nesciunt dolore soluta deserunt cum reiciendis maiores beatae hic, ratione amet ipsam eaque quisquam harum distinctio recusandae ut!</p>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, vel?</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque harum dolorem sit quasi illum cumque?</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum error ut aut inventore maiores quis atque ducimus nobis voluptatibus quidem sint magnam debitis necessitatibus, neque consequuntur corrupti non dolorum ipsam!</p>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque facilis, aliquid accusantium natus laboriosam quos repudiandae voluptatem quidem hic laborum totam. Atque nesciunt dolore soluta deserunt cum reiciendis maiores beatae hic, ratione amet ipsam eaque quisquam harum distinctio recusandae ut!</p>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, vel?</p>
                         </div>
                     </div>
 
                     <!-- Div tag that contains the sidebar -->
-                    <div class="sidebar">
-                        <!-- Div tag that contains the search bar -->
-                        <div class="section search">
-                            <h2 class="section-title">Search</h2>
-                            <form action="index.html" method="post">
-                                <input type="text" name="search-input" class="text-input" placeholder="Search...">
-                            </form>
+                    <div class="sidebar post">
+                        <div class="section popular-posts">
+                            <h2 class="section-title">Popular Posts</h2>
+                            <!-- Div tag that contains the post itself -->
+                            <div class="post clear">
+                                <img src="img/my-neighbor-totoro.jpg" alt="totoro">
+                                <a href="" class="title"><h4>My Neighbor Totoro</h4></a>
+                            </div>
+                            <div class="post clear">
+                                <img src="img/howls-moving-castle.jpg" alt="howls-moving-castle">
+                                <a href="" class="title"><h4>Howl's Moving Castle</h4></a>
+                            </div>
+                            <div class="post clear">
+                                <img src="img/spirited-away.avif" alt="spirited-away">
+                                <a href="" class="title"><h4>Spirited Away</h4></a>
+                            </div>
                         </div>
                         <!-- Div tag that contains the topic section -->
                         <div class="section topics">
