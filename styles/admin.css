@@ -1,0 +1,80 @@
+header {
+    background:rgb(17, 89, 30); 
+}
+.admin-page-wrap {
+    height: calc(100% - 66px);
+    /* border: solid 1px red; */
+    display: flex;
+}
+.admin-page-wrap .admin-sidebar {
+    flex: 2;
+    /* border: solid 1px blue; */
+    height: 100%;
+    background: rgb(25, 116, 41);
+}
+.admin-page-wrap .admin-sidebar ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    color: rgb(192, 232, 200);
+}
+.admin-page-wrap .admin-sidebar ul li a {
+    padding: 18px;
+    display: block;
+    border-bottom:solid 1px rgb(0, 54, 10);
+}
+.admin-page-wrap .admin-sidebar ul li a:hover {
+    background: rgb(0, 54, 10);
+}
+.admin-page-wrap .admin-content {
+    flex: 8;
+    border: solid 1px purple;
+    height: 100%;
+    padding: 40px 100px 100px;
+    overflow-y: scroll; /* Give us the ability to scroll the section if there is more content that it can hold */
+}
+.admin-content .page-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.1rem;
+}
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: solid 1px #aaaaaa;
+}
+.edit {
+    color: #3a6e3a;
+    border: solid 1px #3a6e3a;
+    background: #bcf5bc;
+}
+.delete {
+    color: #884b4b;
+    border: solid 1px #884b4b;
+    background: #f5bcbc;
+}
+.delete:hover {
+    color: white !important;
+    background-color: #884b4b;
+}
+.publish {
+    color: rgb(21, 21, 255);
+    border: solid 1px rgb(21, 21, 255);
+    background: rgb(120, 120, 255);
+}
+.publish:hover {
+    color: white !important;
+    background-color: rgb(21, 21, 255);
+}
+form div {
+    margin-bottom: 15px;
+}
+form div label {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
