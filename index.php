@@ -1,3 +1,4 @@
+<?php include("path.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,47 +9,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Work+Sans:wght@300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7f5f03b58c.js" crossorigin="anonymous"></script>
     <!-- Link to css file -->
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <title>Ghiblog</title>
 </head>
-<body background="./img/background.jpg">
+<body background="assets/img/background.jpg">
     <!-- Class used to make page fade into view -->
     <div class="fade-in">
         
         <div id="MainContainer">
-            <!-- Header part of the website -->
-            <header>
-                <div class="logo">
-                    <!-- Website title -->
-                    <h1 class="logo-title"><span>Ghi</span>blog</h1>
-                </div>
-                <!-- Adding a menu icon for mobile users -->
-                <i class="fa fa-bars menu-icon"></i>
-                <!-- Navigation bar -->
-                <ul class="nav">
-                    <li><a href="#">
-                        <i class="fa-solid fa-house"></i>
-                        Home
-                    </a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <!-- <li><a href="#">Sign Up</a></li>
-                    <li><a href="#">Login</a></li> -->
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-user"></i>
-                            Théo
-                            <i class="fa fa-chevron-down"></i>
-                        </a>
-                        <ul>
-                            <li><a href="#">Dashboard</a></li>
-                            <li><a href="#" class="logout">Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </header>
-
+            <!-- Header of the website -->
+            <?php include(ROOT_PATH . "/app/PageParts/header.php"); ?>
+            
             <!-- Div tag that will wrap the entire content of the page -->
             <div class="page-wrap">
                 <!-- Div tag that contains the carousel of popular posts -->
@@ -59,7 +31,7 @@
                     <div class="post-wrap">
                         <!-- Div tags that contain the posts themselves -->
                         <div class="post">
-                            <img src="img/ghibli-studios.PNG" alt="ghibli-presentation" class="post-image">
+                            <img src="assets/img/ghibli-studios.PNG" alt="ghibli-presentation" class="post-image">
                             <div class="post-info">
                                 <h3><a href="#">What is Studio Ghibli ?</a></h3>
                                 <i class="far fa-user"> Theo</i>
@@ -68,7 +40,7 @@
                             </div>
                         </div>
                         <div class="post">
-                            <img src="img/my-neighbor-totoro.jpg" alt="totoro" class="post-image">
+                            <img src="assets/img/my-neighbor-totoro.jpg" alt="totoro" class="post-image">
                             <div class="post-info">
                                 <h3><a href="#">My Neighbor Totoro</a></h3>
                                 <i class="far fa-user"> Theo</i>
@@ -77,7 +49,7 @@
                             </div>
                         </div>
                         <div class="post">
-                            <img src="img/howls-moving-castle.jpg" alt="howls-moving-castle" class="post-image">
+                            <img src="assets/img/howls-moving-castle.jpg" alt="howls-moving-castle" class="post-image">
                             <div class="post-info">
                                 <h3><a href="#">Howl's Moving Castle</a></h3>
                                 <i class="far fa-user"> Theo</i>
@@ -86,7 +58,7 @@
                             </div>
                         </div>
                         <div class="post">
-                            <img src="img/spirited-away.avif" alt="spirited-away" class="post-image">
+                            <img src="assets/img/spirited-away.avif" alt="spirited-away" class="post-image">
                             <div class="post-info">
                                 <h3><a href="#">Spirited Away</a></h3>
                                 <i class="far fa-user"> Theo</i>
@@ -105,7 +77,7 @@
                         <h1 class="recent-post-title">Recent Posts</h1>
                         <!-- Div tag that contains the post itself -->
                         <div class="post clear">
-                            <img src="img/ghibli-studios.PNG" alt="ghibli-presentation" class="post-image">
+                            <img src="assets/img/ghibli-studios.PNG" alt="ghibli-presentation" class="post-image">
                             <div class="post-preview">
                                 <h2><a href="#">What is Studio Ghibli ?</a></h2>
                                 <i class="far fa-user"> Theo</i>
@@ -116,7 +88,7 @@
                             </div>
                         </div>
                         <div class="post clear">
-                            <img src="img/my-neighbor-totoro.jpg" alt="totoro" class="post-image">
+                            <img src="assets/img/my-neighbor-totoro.jpg" alt="totoro" class="post-image">
                             <div class="post-preview">
                                 <h2><a href="#">My Neighbor Totoro</a></h2>
                                 <i class="far fa-user"> Theo</i>
@@ -127,7 +99,7 @@
                             </div>
                         </div>
                         <div class="post clear">
-                            <img src="img/howls-moving-castle.jpg" alt="howls-moving-castle" class="post-image">
+                            <img src="assets/img/howls-moving-castle.jpg" alt="howls-moving-castle" class="post-image">
                             <div class="post-preview">
                                 <h2><a href="#">Howl's Moving Castle</a></h2>
                                 <i class="far fa-user"> Theo</i>
@@ -138,7 +110,7 @@
                             </div>
                         </div>
                         <div class="post clear">
-                            <img src="img/spirited-away.avif" alt="spirited-away" class="post-image">
+                            <img src="assets/img/spirited-away.avif" alt="spirited-away" class="post-image">
                             <div class="post-preview">
                                 <h2><a href="#">Spirited Away</a></h2>
                                 <i class="far fa-user"> Theo</i>
@@ -155,7 +127,7 @@
                         <!-- Div tag that contains the search bar -->
                         <div class="section search">
                             <h2 class="section-title">Search</h2>
-                            <form action="index.html" method="post">
+                            <form action="index.php" method="post">
                                 <input type="text" name="search-input" class="text-input" placeholder="Search...">
                             </form>
                         </div>
@@ -175,65 +147,15 @@
                 </div>
             </div>
 
-            <!-- Div tag that contains the footer -->
-            <div class="footer">
-                <!-- Div tag that contains the content within the footer -->
-                <div class="footer-content">
-                    <!-- Div tag that contains the about section of the footer -->
-                    <div class="footer-section about">
-                        <h1 class="logo"><span>Ghi</span>blog</h1>
-                        <p>
-                            Ghiblog is a fictionnal blog about Studio Ghibli and other animated movies conceived for a computer science project.
-                        </p>
-                        <div class="contact-informations">
-                            <span><i class="fas fa-phone"></i> &nbsp; (+33)1 23 45 67 89</span>
-                            <span><i class="fas fa-envelope"></i> &nbsp; this-is-not@real-address.com</span>
-                        </div>
-                        <div class="social-media">
-                            <a href="#"><i class="fab fa-facebook"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
-                            <a href="#"><i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                    <!-- Div tag that contains the link section of the footer -->
-                    <div class="footer-section links">
-                        <h2>Links</h2><br>
-                        <ul>
-                            <a href="#">
-                                <li>Events</li>
-                            </a>
-                            <a href="#">
-                                <li>Team</li>
-                            </a>
-                            <a href="#">
-                                <li>Terms and Contitions</li>
-                            </a>
-                        </ul>
-                    </div>
-                    <!-- Div tag that contains the contact section of the footer -->
-                    <div class="footer-section contact">
-                        <h2>Contact Us</h2><br>
-                        <form action="index.html" method="post">
-                            <input type="email" name="email" class="text-input contact-input" placeholder="Enter your email...">
-                            <textarea name="message" class="text-input contact-input" placeholder="Enter your message..." rows="4"></textarea>
-                            <button type="submit" class="button button-big"><i class="fas fa-paper-plane"></i> Send</button>
-                        </form>
-                    </div>
-                </div>
-                <!-- Div tag that contains the credentials of the website -->
-                <div class="footer-credentials">
-                    &copy; Ghiblog | Designed by Céliane ALLAIRE and Théo GOUIN
-                </div>
-            </div>
+            <!-- Footer of the website -->
+            <?php include(ROOT_PATH . "/app/PageParts/footer.php"); ?>
 
             <!-- JQuery -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
             <!-- Slick -->
             <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
             <!-- JavaScript -->
-            <script src="js/scripts.js"></script>
+            <script src="assets/js/scripts.js"></script>
         </div>
     </div>
     

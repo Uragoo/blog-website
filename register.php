@@ -1,3 +1,4 @@
+<?php include("path.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,49 +9,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Work+Sans:wght@300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7f5f03b58c.js" crossorigin="anonymous"></script>
     <!-- Link to css file -->
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <title>Register</title>
 </head>
-<body background="./img/background.jpg">
+<body background="assets/img/background.jpg">
     <!-- Class used to make page fade into view -->
     <div class="fade-in">
         
         <div id="MainContainer">
-            <!-- Header part of the website -->
-            <header>
-                <div class="logo">
-                    <!-- Website title -->
-                    <h1 class="logo-title"><span>Ghi</span>blog</h1>
-                </div>
-                <!-- Adding a menu icon for mobile users -->
-                <i class="fa fa-bars menu-icon"></i>
-                <!-- Navigation bar -->
-                <ul class="nav">
-                    <li><a href="#">
-                        <i class="fa-solid fa-house"></i>
-                        Home
-                    </a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <!-- <li><a href="#">Sign Up</a></li>
-                    <li><a href="#">Login</a></li> -->
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-user"></i>
-                            Théo
-                            <i class="fa fa-chevron-down"></i>
-                        </a>
-                        <ul>
-                            <li><a href="#">Dashboard</a></li>
-                            <li><a href="#" class="logout">Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </header>
+            <!-- Header of the website -->
+            <?php include(ROOT_PATH . "/app/PageParts/header.php"); ?>
 
             <div class="authentication">
-                <form action="register.html" method="post">
+                <form action="register.php" method="post">
                     <h2 class="form-title">Register</h2>
 
                     <div>
@@ -72,7 +44,7 @@
                     <div>
                         <button type="submit" name="register-button" class="button button-big">Register</button>
                     </div>
-                    <p>Or <a href="login.html">Sign In</a></p>
+                    <p>Or <a href="<?php echo BASE_URL . '/login.php' ?>">Sign In</a></p>
                 </form>
             </div>
             <div>
@@ -83,7 +55,7 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
             
             <!-- JavaScript -->
-            <script src="js/scripts.js"></script>
+            <script src="assets/js/scripts.js"></script>
         </div>
     </div>
     
