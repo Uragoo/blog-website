@@ -21,7 +21,7 @@ function ConnectDatabase(){
     }
 }
 
-//Function to clean up an user input for safety reasons
+//Function to clean up an user input for safety reasons (prevent SQL injection)
 //--------------------------------------------------------------------------------
 function SecurizeString_ForSQL($string) {
     $string = trim($string);
