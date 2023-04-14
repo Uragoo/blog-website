@@ -1,4 +1,7 @@
-<?php include("path.php"); ?>
+<?php 
+include("path.php");
+include(ROOT_PATH . "/app/database/users.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,21 +28,24 @@
                 <form action="register.php" method="post">
                     <h2 class="form-title">Register</h2>
 
+                    <!-- Display error messages if found -->
+                    <?php include(ROOT_PATH . "/app/database/formErrors.php"); ?>
+
                     <div>
                         <label for="">Username</label>
-                        <input type="text" name="username" class="text-input">
+                        <input type="text" name="username" class="text-input" value="<?php echo $username ?>">
                     </div>
                     <div>
                         <label for="">Email</label>
-                        <input type="email" name="email" class="text-input">
+                        <input type="email" name="email" class="text-input" value="<?php echo $email ?>">
                     </div>
                     <div>
                         <label for="">Password</label>
-                        <input type="password" name="password" class="text-input">
+                        <input type="password" name="password" class="text-input" value="<?php echo $password ?>">
                     </div>
                     <div>
                         <label for="">Password confirmation</label>
-                        <input type="password" name="password-confirmation" class="text-input">
+                        <input type="password" name="password-confirmation" class="text-input" value="<?php echo $passwordConfirmation ?>">
                     </div>
                     <div>
                         <button type="submit" name="register-button" class="button button-big">Register</button>
