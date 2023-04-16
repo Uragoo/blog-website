@@ -19,6 +19,16 @@ if (isset($_POST['register-button'])) {
 
         $user_id = createRow('users', $_POST);
         $user = selectOne('users', ['id' => $user_id]);
+
+        //Log in the user
+        //Save the user informations in the session and redirect him to the main page
+        $_SESSION['id'] = $user['id'];
+        $_SESSION['username'] = $user['username'];
+        $_SESSION['admin'] = $user['admin'];
+        $_SESSION['message'] = 'You are now logged in';
+        $_SESSION['type'] = 'success';
+        header('location: ' . BASE_URL . '/index.php');
+        exit();
     } else {
         // If there are errors, save the values to get them back in the form for the user to change it
         // This way the user don't have to write all the informations again
