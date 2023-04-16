@@ -20,17 +20,16 @@
                     <i class="fa fa-chevron-down"></i>
                 </a>
                 <ul>
-                    <li><a href="#">Dashboard</a></li>
+                    <?php if ($_SESSION['admin'] === 1): ?>
+                        <li><a href="<?php echo BASE_URL . "/admin/dashboard.php" ?>">Dashboard</a></li>
+                    <?php endif; ?>
                     <li><a href="#" class="logout">Logout</a></li>
                 </ul>
             </li>
         <?php else: ?>
-            <li><a href="#">Register</a></li>
-            <li><a href="#">Login</a></li>
+            <li><a href="<?php echo BASE_URL . "/register.php" ?>">Register</a></li>
+            <li><a href="<?php echo BASE_URL . "/login.php" ?>">Login</a></li>
         <?php endif; ?>
-
-        <!-- <li><a href="#">Sign Up</a></li>
-        <li><a href="#">Login</a></li> -->
         
     </ul>
 </header>

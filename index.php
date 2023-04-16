@@ -23,7 +23,10 @@ include(ROOT_PATH . "/app/database/database.php");
         <div id="MainContainer">
             <!-- Header of the website -->
             <?php include(ROOT_PATH . "/app/PageParts/header.php"); ?>
-            
+
+            <!-- Display a message whenever there is one in the session -->
+            <?php include(ROOT_PATH . "/app/PageParts/messages.php"); ?>
+
             <!-- Div tag that will wrap the entire content of the page -->
             <div class="page-wrap">
                 <!-- Div tag that contains the carousel of popular posts -->
