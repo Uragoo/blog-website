@@ -1,4 +1,7 @@
-<?php include("path.php"); ?>
+<?php 
+include("path.php"); 
+include(ROOT_PATH . "/app/database/users.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,13 +27,17 @@
             <div class="authentication">
                 <form action="login.php" method="post">
                     <h2 class="form-title">Login</h2>
+
+                    <!-- Display error messages if found -->
+                    <?php include(ROOT_PATH . "/app/database/formErrors.php"); ?>
+
                     <div>
                         <label for="">Email</label>
-                        <input type="email" name="email" class="text-input">
+                        <input type="email" name="email" class="text-input" value="<?php echo $email; ?>">
                     </div>
                     <div>
                         <label for="">Password</label>
-                        <input type="password" name="password" class="text-input">
+                        <input type="password" name="password" class="text-input" value="<?php echo $password; ?>">
                     </div>
                     <div>
                         <button type="submit" name="login-button" class="button button-big">Login</button>

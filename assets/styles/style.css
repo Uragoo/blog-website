@@ -120,7 +120,7 @@ header ul li a i.fa.fa-chevron-down {
 }
 header ul li a {
     display: block;
-    padding: 22px;
+    padding: 23px;
     text-decoration: none;
     font-size: 1.1em;
 }
@@ -134,7 +134,7 @@ header ul li ul {
     right: 0px;
     width: 180px;
     display: none;
-    z-index: 88888;
+    /* z-index: 88888; */
 }
 header ul li:hover ul {
     display: block;

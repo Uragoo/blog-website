@@ -12,6 +12,7 @@ include(ROOT_PATH . "/app/database/database.php");
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Work+Sans:wght@300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7f5f03b58c.js" crossorigin="anonymous"></script>
     <!-- Link to css file -->
+    <!-- <link rel="stylesheet" href="<?php echo ROOT_PATH . "/assets/styles/style.css" ?> "> -->
     <link rel="stylesheet" href="assets/styles/style.css">
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <title>Ghiblog</title>

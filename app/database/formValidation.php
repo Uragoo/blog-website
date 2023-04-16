@@ -23,3 +23,15 @@ function registerValidation($fields) {
 
     return $errors;
 }
+
+function loginValidation($fields){
+    $errors = array();
+
+    if (empty($fields['email'])) {
+        array_push($errors, 'Email required');
+    }
+    if (empty($fields['password'])) {
+        array_push($errors, 'Password required');
+    }
+    return $errors;
+}
