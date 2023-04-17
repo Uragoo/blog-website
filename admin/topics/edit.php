@@ -1,4 +1,7 @@
-<?php include("../../path.php"); ?>
+<?php 
+include("../../path.php");
+include(ROOT_PATH . "/app/database/topics.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,17 +35,22 @@
             <!-- Div tag that contains the list of all posts of the website -->
             <div class="dashboard">
                 <h2 class="page-title">Edit Topic</h2>
-                <form action="create.html" method="post">
+
+                <!-- Display error messages if found -->
+                <?php include(ROOT_PATH . "/app/database/formErrors.php"); ?>
+                
+                <form action="edit.php" method="post">
+                    <input type="hidden" name="id" value="<?php echo $id ?>">
                     <div>
                         <label><h4>Topic Name</h4></label>
-                        <input type="text" name="name" class="text-input">
+                        <input type="text" name="name" class="text-input" value="<?php echo $name ?>">
                     </div>
                     <div>
                         <label><h4>Topic Description</h4></label>
-                        <textarea name="topic-description" id="editor"></textarea>
+                        <textarea name="description" id="editor"><?php echo $description ?></textarea>
                     </div>
                     <div>
-                        <button type="submit" class="button button-big">Update Topic</button>
+                        <button type="submit" class="button button-big" name="update-topic">Update Topic</button>
                     </div>
                 </form>
             </div>

@@ -27,6 +27,7 @@ function userLogin($user) {
 
 //Check for register errors and create the user in the database if there is none
 if (isset($_POST['register-button'])) {
+    //Check for errors in the form
     $errors = registerValidation($_POST);    
 
     if (count($errors) === 0) {

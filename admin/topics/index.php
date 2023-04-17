@@ -1,4 +1,7 @@
-<?php include("../../path.php"); ?>
+<?php 
+include("../../path.php"); 
+include(ROOT_PATH . "/app/database/topics.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,6 +35,10 @@
             <!-- Div tag that contains the list of all posts of the website -->
             <div class="dashboard">
                 <h2 class="page-title">Manage Topics</h2>
+
+                <!-- Display a message whenever there is one in the session -->
+                <?php include(ROOT_PATH . "/app/PageParts/messages.php"); ?>
+
                 <table>
                     <thead>
                         <th>N°</th>
@@ -39,18 +46,15 @@
                         <th colspan="2">Action</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Topic 1</td>
-                            <td><a href="#" class="button edit">Edit</a></td>
-                            <td><a href="#" class="button delete">Delete</a></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Topic 2</td>
-                            <td><a href="#" class="button edit">Edit</a></td>
-                            <td><a href="#" class="button delete">Delete</a></td>
-                        </tr>
+                        <!-- Display all the topics from the database -->
+                        <?php foreach ($topics as $key => $topic): ?>
+                            <tr>
+                                <td><?php echo $key + 1; ?></td>
+                                <td><?php echo $topic['name']; ?></td>
+                                <td><a href="edit.php?id=<?php echo $topic['id']; ?>" class="button edit">Edit</a></td>
+                                <td><a href="index.php?delete_id=<?php echo $topic['id']; ?>" class="button delete">Delete</a></td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

@@ -10,7 +10,7 @@ function registerValidation($fields) {
         array_push($errors, 'Email required');
     } else {
         $exists = selectOne('users', ['email' => $fields['email']]);
-        if (isset($exists)) {
+        if ($exists) {
             array_push($errors, 'This email is already used');
         }
     }
@@ -33,5 +33,22 @@ function loginValidation($fields){
     if (empty($fields['password'])) {
         array_push($errors, 'Password required');
     }
+    return $errors;
+}
+
+function topicValidation($topic, $query) {
+    $errors = array();
+
+    if (empty($topic['name'])) {
+        array_push($errors, 'Topic name required');
+    }
+    
+    if ($query == 'create') {
+        $exists = selectOne('topics', ['name' => $topic['name']]);
+        if ($exists) {
+            array_push($errors, 'This topic already exists !');
+        }
+    }
+
     return $errors;
 }
