@@ -1,5 +1,8 @@
 
-<?php include("../../path.php"); ?>
+<?php 
+include("../../path.php"); 
+include(ROOT_PATH . "/app/database/posts.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,6 +37,10 @@
             <!-- Div tag that contains the list of all posts of the website -->
             <div class="dashboard">
                 <h2 class="page-title">Manage Posts</h2>
+
+                <!-- Display a message whenever there is one in the session -->
+                <?php include(ROOT_PATH . "/app/PageParts/messages.php"); ?>
+                
                 <table>
                     <thead>
                         <th>N°</th>
@@ -42,22 +49,20 @@
                         <th colspan="3">Action</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td><a href="#">What is Studio Ghibli</a></td>
-                            <td>Théo</td>
-                            <td><a href="#" class="button edit">Edit</a></td>
-                            <td><a href="#" class="button delete">Delete</a></td>
-                            <td><a href="#" class="button publish">Publish</a></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td><a href="#">My Neighbor Totoro</a></td>
-                            <td>Théo</td>
-                            <td><a href="#" class="button edit">Edit</a></td>
-                            <td><a href="#" class="button delete">Delete</a></td>
-                            <td><a href="#" class="button publish">Publish</a></td>
-                        </tr>
+                        <?php foreach ($posts as $key => $post): ?>
+                            <tr>
+                                <td><?php echo $key + 1; ?></td>
+                                <td><a href="#"><?php echo $post['title']; ?></a></td>
+                                <td>Théo</td>
+                                <td><a href="#" class="button edit">Edit</a></td>
+                                <td><a href="#" class="button delete">Delete</a></td>
+                                <?php if ($post['published']): ?>
+                                    <td><a href="#" class="button unpublish">Unpublish</a></td>
+                                <?php else: ?>
+                                    <td><a href="#" class="button publish">Publish</a></td>
+                                <?php endif; ?>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

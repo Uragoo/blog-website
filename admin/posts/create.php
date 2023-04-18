@@ -1,4 +1,7 @@
-<?php include("../../path.php"); ?>
+<?php 
+include("../../path.php"); 
+include(ROOT_PATH . "/app/database/posts.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,31 +36,56 @@
             <!-- Div tag that contains the list of all posts of the website -->
             <div class="dashboard">
                 <h2 class="page-title">Create Post</h2>
-                <form action="create.php" method="post">
+
+                <!-- Display error messages if found -->
+                <?php include(ROOT_PATH . "/app/database/formErrors.php"); ?>
+
+                <form action="create.php" method="post" enctype="multipart/form-data">
                     <div>
                         <label><h4>Post Title</h4></label>
-                        <input type="text" name="title" class="text-input">
+                        <input type="text" name="title" class="text-input" value="<?php echo $title; ?>">
                     </div>
                     <div>
                         <label><h4>Post Image</h4></label>
-                        <input type="file" class="text-input" name="post-image" accept=".png,.jpg,.jpeg,.svg,.avif">
+                        <input type="file" class="text-input" name="image">
                     </div>
                     <div>
                         <label><h4>Post Content</h4></label>
-                        <textarea name="post-content" id="editor"></textarea>
+                        <textarea name="body" id="editor"><?php echo $body; ?></textarea>
                     </div>
                     <div>
                         <label><h4>Topic</h4></label>
-                        <select name="topic" class="text-input">
-                            <option value="Topic 1">Topic 1</option>
-                            <option value="Topic 2">Topic 2</option>
-                            <option value="Topic 3">Topic 3</option>
-                            <option value="Topic 4">Topic 4</option>
-                            <option value="Topic 5">Topic 5</option>
+                        <!-- Display all the topics from the database -->
+                        <select name="topic_id" class="text-input">
+                            <option value=""></option>
+                            <?php foreach ($topics as $key => $topic): ?>
+                                <!-- If there was an error sending the form and the user selected a topic -->
+                                <!-- Select it, else display all topics as a new form -->
+                                <?php if (!empty($topic_id) && $topic_id == $topic['id']): ?>
+                                    <option selected value="<?php echo $topic['id']; ?>"><?php echo $topic['name']; ?></option>
+                                <?php else: ?>
+                                    <option value="<?php echo $topic['id']; ?>"><?php echo $topic['name']; ?></option>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div>
-                        <button type="submit" class="button button-big">Create Post</button>
+                        <!-- If there was an error sending the form and the user checked the publish checkbox -->
+                        <!-- Select it, else display it unchecked as a new form -->
+                        <?php if (empty($published)): ?>
+                        <label>
+                            <input type="checkbox" name="published">
+                            Publish Now ?
+                        </label>
+                        <?php else: ?>
+                            <label>
+                                <input type="checkbox" name="published" checked>
+                                Publish Now ?
+                            </label>
+                        <?php endif; ?>
+                    </div>
+                    <div>
+                        <button type="submit" class="button button-big" name="create-post">Create Post</button>
                     </div>
                 </form>
             </div>

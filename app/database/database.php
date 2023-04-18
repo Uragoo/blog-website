@@ -4,6 +4,16 @@ session_start(); //Start the session
 
 require('connect.php');
 
+//Function to clean up an user input for safety reasons (prevent SQL injection)
+function SecurizeString_ForSQL($string) {
+    $string = trim($string);
+    $string = stripcslashes($string);
+    $string = addslashes($string);
+    $string = htmlspecialchars($string);
+    return $string;
+}
+
+//Execute a query to our SQL database
 function executeQuery($sql, $data) {
     global $connection;
     $query = $connection->prepare($sql); //Preparation of the query
@@ -14,6 +24,8 @@ function executeQuery($sql, $data) {
     $query->execute(); //Execution of the query
     return $query;
 }
+
+//For developpement purpose
 function displayValue($value) {
     echo "<pre>", print_r($value, true), "</pre>";
 }

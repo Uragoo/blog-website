@@ -16,6 +16,7 @@ if (isset($_POST['create-topic'])) {
 
     if (count($errors) === 0) {
         unset($_POST['create-topic']); //Unset unwanted keys to create the user
+        $_POST["description"] = SecurizeString_ForSQL($_POST["description"]);
         $id = createRow('topics', $_POST);
         $_SESSION['message'] = "Topic successfully created !";
         $_SESSION['type'] = "success";
@@ -48,12 +49,15 @@ if (isset($_POST['update-topic'])) {
         $id = $_POST['id'];
         unset($_POST['id']);
         unset($_POST['update-topic']); //Unset unwanted keys to create the user
+        $_POST["description"] = SecurizeString_ForSQL($_POST["description"]);
         $id = updateRow($table, $id, $_POST);
         $_SESSION['message'] = "Topic successfully updated !";
         $_SESSION['type'] = "success";
         header('location: ' . BASE_URL . "/admin/topics/index.php");
         exit();
     } else {
+        // If there are errors, save the values to get them back in the form for the user to change it
+        // This way the user don't have to write all the informations again
         $name = $_POST['name'];
         $description = $_POST['description'];
     }

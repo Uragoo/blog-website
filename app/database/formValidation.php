@@ -1,14 +1,17 @@
 <?php
 
+//Return errors in the register form
 function registerValidation($fields) {
     $errors = array();
 
+    //Check if the fields are empty
     if (empty($fields['username'])) {
         array_push($errors, 'Username required');
     }
     if (empty($fields['email'])) {
         array_push($errors, 'Email required');
     } else {
+        //Check if the email is already used
         $exists = selectOne('users', ['email' => $fields['email']]);
         if ($exists) {
             array_push($errors, 'This email is already used');
@@ -24,9 +27,11 @@ function registerValidation($fields) {
     return $errors;
 }
 
+//Return errors in the login form
 function loginValidation($fields){
     $errors = array();
 
+    //Check if the fields are empty
     if (empty($fields['email'])) {
         array_push($errors, 'Email required');
     }
@@ -36,18 +41,45 @@ function loginValidation($fields){
     return $errors;
 }
 
+//Return errors in the topic forms
 function topicValidation($topic, $query) {
     $errors = array();
 
+    //Check if the fields are empty
     if (empty($topic['name'])) {
         array_push($errors, 'Topic name required');
     }
     
+    //Check if the topic already exists
     if ($query == 'create') {
         $exists = selectOne('topics', ['name' => $topic['name']]);
         if ($exists) {
             array_push($errors, 'This topic already exists !');
         }
+    }
+
+    return $errors;
+}
+
+//Return errors in the post forms
+function postValidation($post) {
+    $errors = array();
+
+    //Check if the topic already exists
+    if (empty($post['title'])) {
+        array_push($errors, 'Post title required');
+    } else {
+        //Check if a post already use the title
+        $exists = selectOne('posts', ['title' => $post['title']]);
+        if ($exists) {
+            array_push($errors, 'The title is already used !');
+        }
+    }
+    if (empty($post['body'])) {
+        array_push($errors, 'Post content required');
+    }
+    if (empty($post['topic_id'])) {
+        array_push($errors, 'Post topic required');
     }
 
     return $errors;

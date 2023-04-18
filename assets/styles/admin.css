@@ -71,6 +71,15 @@ th, td {
     color: white !important;
     background-color: rgb(21, 21, 255);
 }
+.unpublish {
+    color: #8d8d27;
+    border: solid 1px #8d8d27;
+    background: #dada8c;
+}
+.unpublish:hover {
+    color: white !important;
+    background-color: #8d8d27;
+}
 form div {
     margin-bottom: 15px;
 }
