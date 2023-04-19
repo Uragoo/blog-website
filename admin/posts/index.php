@@ -54,8 +54,8 @@ include(ROOT_PATH . "/app/database/posts.php");
                                 <td><?php echo $key + 1; ?></td>
                                 <td><a href="#"><?php echo $post['title']; ?></a></td>
                                 <td>Théo</td>
-                                <td><a href="#" class="button edit">Edit</a></td>
-                                <td><a href="#" class="button delete">Delete</a></td>
+                                <td><a href="edit.php?id=<?php echo $post['id']; ?> " class="button edit">Edit</a></td>
+                                <td><a href="edit.php?delete_id=<?php echo $post['id']; ?>" class="button delete">Delete</a></td>
                                 <?php if ($post['published']): ?>
                                     <td><a href="#" class="button unpublish">Unpublish</a></td>
                                 <?php else: ?>
