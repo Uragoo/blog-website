@@ -1,4 +1,7 @@
-<?php include("../../path.php"); ?>
+<?php 
+include("../../path.php");
+include(ROOT_PATH . "/app/database/users.php"); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,6 +36,10 @@
             <!-- Div tag that contains the list of all posts of the website -->
             <div class="dashboard">
                 <h2 class="page-title">Manage Users</h2>
+
+                <!-- Display a message whenever there is one in the session -->
+                <?php include(ROOT_PATH . "/app/PageParts/messages.php"); ?>
+
                 <table>
                     <thead>
                         <th>N°</th>
@@ -42,22 +49,20 @@
                         <th colspan="2">Action</th>
                     </thead>
                     <tbody>
+                        <?php foreach ($users as $key => $user): ?>
                         <tr>
-                            <td>1</td>
-                            <td>Théo</td>
-                            <td>this-is-not@real-address.com</td>
-                            <td>Admin</td>
-                            <td><a href="#" class="button edit">Edit</a></td>
-                            <td><a href="#" class="button delete">Delete</a></td>
+                            <td><?php echo $key + 1; ?></td>
+                            <td><?php echo $user['username']; ?></td>
+                            <td><?php echo $user['email']; ?></td>
+                            <?php if ($user['admin'] == 1): ?>
+                                <td>Admin</td>
+                            <?php else: ?>
+                                <td>Visitor</td>
+                            <?php endif; ?>
+                            <td><a href="edit.php?id=<?php echo $user['id']; ?>" class="button edit">Edit</a></td>
+                            <td><a href="index.php?delete_id=<?php echo $user['id']; ?>" class="button delete">Delete</a></td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Céliane</td>
-                            <td>this-is-not@real-address.com</td>
-                            <td>Admin</td>
-                            <td><a href="#" class="button edit">Edit</a></td>
-                            <td><a href="#" class="button delete">Delete</a></td>
-                        </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

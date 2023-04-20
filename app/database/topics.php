@@ -12,7 +12,7 @@ $topics = selectAll($table);
 //If the create form is sent, create a new topic in the database
 if (isset($_POST['create-topic'])) {
     //Check for errors in the form
-    $errors = topicValidation($_POST, 'create');
+    $errors = topicValidation($_POST);
 
     if (count($errors) === 0) {
         unset($_POST['create-topic']); //Unset unwanted keys to create the user
@@ -43,7 +43,7 @@ if (isset($_GET['id'])) {
 //If the edit form is sent, update the topic in the database
 if (isset($_POST['update-topic'])) {
     //Check for errors in the form
-    $errors = topicValidation($_POST, 'update');
+    $errors = topicValidation($_POST);
 
     if (count($errors) === 0) {
         $id = $_POST['id'];

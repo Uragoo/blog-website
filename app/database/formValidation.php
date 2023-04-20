@@ -13,7 +13,7 @@ function registerValidation($fields) {
     } else {
         //Check if the email is already used
         $exists = selectOne('users', ['email' => $fields['email']]);
-        if ($exists) {
+        if ($exists && $fields['id'] != $fields['id']) {
             array_push($errors, 'This email is already used');
         }
     }
@@ -42,7 +42,7 @@ function loginValidation($fields){
 }
 
 //Return errors in the topic forms
-function topicValidation($topic, $query) {
+function topicValidation($topic) {
     $errors = array();
 
     //Check if the fields are empty
@@ -51,11 +51,9 @@ function topicValidation($topic, $query) {
     }
     
     //Check if the topic already exists
-    if ($query == 'create') {
-        $exists = selectOne('topics', ['name' => $topic['name']]);
-        if ($exists) {
-            array_push($errors, 'This topic already exists !');
-        }
+    $exists = selectOne('topics', ['name' => $topic['name']]);
+    if ($exists && $topic['id'] != $topic['id']) {
+        array_push($errors, 'This topic already exists !');
     }
 
     return $errors;
@@ -71,7 +69,7 @@ function postValidation($post) {
     } else {
         //Check if a post already use the title
         $exists = selectOne('posts', ['title' => $post['title']]);
-        if ($exists) {
+        if ($exists && $post['id'] != $exists['id']) {
             array_push($errors, 'The title is already used !');
         }
     }

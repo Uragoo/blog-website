@@ -9,6 +9,7 @@ $errors = array();
 $topics = selectAll('topics'); //Fetch all topics from the database to use in our post forms
 $posts = selectAll($table); //Fetch all posts from the database
 
+$id = '';
 $title = "";
 // $image = "";
 $body = "";
@@ -141,4 +142,20 @@ if (isset($_GET['delete_id'])) {
     $_SESSION['type'] = "success";
     header("location: " . BASE_URL . "/admin/posts/index.php");
     exit();   
+}
+
+////Publish or unpublish the selected post when there is a GET published and post_id attribute
+if (isset($_GET['published']) && isset($_GET['post_id'])) {
+    $published = $_GET['published'];
+    $post_id = $_GET['post_id'];
+
+    $post = updateRow($table, $post_id, ['published' => $published]);
+    if ($published) {
+        $_SESSION['message'] = "Post published !";
+    } else {
+        $_SESSION['message'] = "Post unpublished !";
+    } 
+    $_SESSION['type'] = "success";
+    header("location: " . BASE_URL . "/admin/posts/index.php");
+    exit(); 
 }

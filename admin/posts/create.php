@@ -47,7 +47,7 @@ include(ROOT_PATH . "/app/database/posts.php");
                     </div>
                     <div>
                         <label><h4>Post Image</h4></label>
-                        <input type="file" class="text-input" name="image">
+                        <input type="file" class="text-input" name="image" accept="image/*">
                     </div>
                     <div>
                         <label><h4>Post Content</h4></label>

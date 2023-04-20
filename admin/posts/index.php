@@ -56,10 +56,11 @@ include(ROOT_PATH . "/app/database/posts.php");
                                 <td>Théo</td>
                                 <td><a href="edit.php?id=<?php echo $post['id']; ?> " class="button edit">Edit</a></td>
                                 <td><a href="edit.php?delete_id=<?php echo $post['id']; ?>" class="button delete">Delete</a></td>
+                                <!-- Publish or unpublish the specified post -->
                                 <?php if ($post['published']): ?>
-                                    <td><a href="#" class="button unpublish">Unpublish</a></td>
+                                    <td><a href="edit.php?published=0&post_id=<?php echo $post['id']; ?>" class="button unpublish">Unpublish</a></td>
                                 <?php else: ?>
-                                    <td><a href="#" class="button publish">Publish</a></td>
+                                    <td><a href="edit.php?published=1&post_id=<?php echo $post['id']; ?>" class="button publish">Publish</a></td>
                                 <?php endif; ?>
                             </tr>
                         <?php endforeach; ?>

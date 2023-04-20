@@ -36,6 +36,10 @@ include(ROOT_PATH . "/app/database/posts.php");
             <!-- Div tag that contains the list of all posts of the website -->
             <div class="dashboard">
                 <h2 class="page-title">Edit Post</h2>
+
+                <!-- Display error messages if found -->
+                <?php include(ROOT_PATH . "/app/database/formErrors.php"); ?>
+
                 <form action="edit.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <div>
@@ -44,7 +48,7 @@ include(ROOT_PATH . "/app/database/posts.php");
                     </div>
                     <div>
                         <label><h4>Post Image</h4></label>
-                        <input type="file" class="text-input" name="image">
+                        <input type="file" class="text-input" name="image" accept="image/*">
                     </div>
                     <div>
                         <label><h4>Post Content</h4></label>

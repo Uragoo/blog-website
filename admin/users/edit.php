@@ -1,4 +1,7 @@
-<?php include("../../path.php"); ?>
+<?php 
+include("../../path.php"); 
+include(ROOT_PATH . "/app/database/users.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,32 +36,40 @@
             <!-- Div tag that contains the list of all posts of the website -->
             <div class="dashboard">
                 <h2 class="page-title">Edit User</h2>
-                <form action="create.html" method="post">
+
+                <!-- Display error messages if found -->
+                <?php include(ROOT_PATH . "/app/database/formErrors.php"); ?>
+
+                <form action="edit.php" method="post">
+                    <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <div>
                         <label><h4>Username</h4></label>
-                        <input type="text" name="username" class="text-input">
+                        <input type="text" name="username" class="text-input" value="<?php echo $username; ?>">
                     </div>
                     <div>
                         <label><h4>Email</h4></label>
-                        <input type="email" name="email" class="text-input">
+                        <input type="email" name="email" class="text-input" value="<?php echo $email; ?>">
                     </div>
                     <div>
                         <label><h4>Password</h4></label>
-                        <input type="password" name="password" class="text-input">
+                        <input type="password" name="password" class="text-input" value="<?php echo $password; ?>">
                     </div>
                     <div>
                         <label><h4>Password confirmation</h4></label>
-                        <input type="password" name="password-confirmation" class="text-input">
+                        <input type="password" name="password-confirmation" class="text-input" value="<?php echo $passwordConfirmation; ?>">
                     </div>
                     <div>
-                        <label><h4>Role</h4></label>
-                        <select name="role" class="text-input">
-                            <option value="Admin">Admin</option>
-                            <option value="Author">Author</option>
-                        </select>
-                    </div>
+                        <label>
+                            <?php if ($admin): ?>
+                                <input type="checkbox" name="admin" checked>
+                            <?php else: ?>
+                                <input type="checkbox" name="admin">
+                            <?php endif; ?>    
+                            Admin ?
+                        </label>
                     <div>
-                        <button type="submit" class="button button-big">Update User</button>
+                    <div>
+                        <button type="submit" class="button button-big" name="update-user">Update User</button>
                     </div>
                 </form>
             </div>
