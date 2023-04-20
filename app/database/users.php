@@ -21,7 +21,7 @@ function userLogin($user) {
 
     //Redirect admin users to the admin dashboard, to the main page if not
     if ($user['admin']) {
-        header('location: ' . BASE_URL . '/admin/posts/index.php');
+        header('location: ' . BASE_URL . '/admin/dashboard.php');
     } else {
         header('location: ' . BASE_URL . '/index.php');
     }

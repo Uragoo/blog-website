@@ -40,7 +40,7 @@ if (isset($_POST['create-post'])) {
     if (count($errors) === 0) {
         //Unset unwanted keys to create the post
         unset($_POST['create-post']);
-        $_POST['user_id'] = 1;
+        $_POST['user_id'] = $_SESSION['id']; //Set the author of the post to the user currently connected
         //If the user checked the publish checkbox set published to true, else false
         if (isset($_POST['published'])) {
             $_POST['published'] = 1;
@@ -106,7 +106,7 @@ if (isset($_POST['update-post'])) {
         //Unset unwanted keys to create the post
         unset($_POST['update-post']);
         unset($_POST['id']);
-        $_POST['user_id'] = 1;
+        $_POST['user_id'] = $_SESSION['id'];
         //If the user checked the publish checkbox set published to true, else false
         if (isset($_POST['published'])) {
             $_POST['published'] = 1;
