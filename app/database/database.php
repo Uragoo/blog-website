@@ -127,3 +127,36 @@ function deleteRow($table, $id) {
     $query = executeQuery($sql, ['id' => $id]);
     return $query->affected_rows;
 }
+
+//function that fetches all the published posts with the username of its author
+function getPublishedPosts() {
+    global $connection;
+    $sql = "SELECT p.*, u.username FROM posts AS p JOIN users AS u ON p.user_id = u.id WHERE p.published = ?";
+
+    $query = executeQuery($sql, ['published' => 1]);
+    $results = $query->get_result()->fetch_all(MYSQL_ASSOC); // Fetching all the results of the query
+    return $results;
+}
+
+//function that fetches all the published posts that correspond with the terms entered by the user in the search bar
+function searchPosts($search) {
+    global $connection;
+    $term = '%' . $search . '%';
+    $sql = "SELECT p.*, u.username FROM posts AS p JOIN users AS u ON p.user_id = u.id 
+    WHERE p.published = ? AND p.title LIKE ? OR p.body LIKE ?";
+
+    $query = executeQuery($sql, ['published' => 1, 'title' => $term, 'body' => $term]);
+    $results = $query->get_result()->fetch_all(MYSQL_ASSOC); // Fetching all the results of the query
+    return $results;
+}
+
+//function that fetches all the posts related to a specific topic
+function getPostsByTopic($topic) {
+    global $connection;
+    $sql = "SELECT p.*, u.username FROM posts AS p JOIN users AS u ON p.user_id = u.id 
+    WHERE p.published = ? AND topic_id = ?";
+
+    $query = executeQuery($sql, ['published' => 1, 'topic_id' => $topic]);
+    $results = $query->get_result()->fetch_all(MYSQL_ASSOC); // Fetching all the results of the query
+    return $results;
+}

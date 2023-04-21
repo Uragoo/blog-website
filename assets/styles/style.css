@@ -210,8 +210,9 @@ header .menu-icon {
     /* border: solid 1px purple; */
     padding: 0px 5px;
 }
-.carousel .post-wrap .post .post-info i {
-    font-style: normal;
+.carousel .post-wrap .post .post-info div .far {
+    /* font-style: normal; */
+    text-transform: none;
 }
 .carousel .previous {
     position: absolute;
@@ -235,6 +236,18 @@ header .menu-icon {
 }
 .content .main-content .recent-post-title {
     margin: 20px 0px 20px 40px;
+}
+.content .main-content .no-post {
+    width: 95%;
+    height: 270px;
+    margin: 20px auto;
+    border-radius: 5px;
+    background: white;
+    position: relative;
+    text-align: center;
+}
+.content .main-content .no-post h2 {
+    margin-top: 120px;
 }
 .content .main-content .post {
     width: 95%;

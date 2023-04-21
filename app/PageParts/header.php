@@ -8,7 +8,7 @@
     <i class="fa fa-bars menu-icon"></i>
     <!-- Navigation bar -->
     <ul class="nav">
-        <li><a href="<?php echo BASE_URL . '/index.php' ?>"><i class="fa-solid fa-house"></i>Home</a></li>
+        <li><a href="<?php echo BASE_URL . '/index.php' ?>"><i class="fa-solid fa-house"></i> Home</a></li>
         <li><a href="<?php echo BASE_URL . '/about.php' ?>">About</a></li>
         <li><a href="#">Services</a></li>
 

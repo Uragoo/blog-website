@@ -1,4 +1,19 @@
-<?php include("path.php"); ?>
+<?php 
+include("path.php"); 
+include(ROOT_PATH . "/app/database/posts.php");
+
+if (isset($_GET['id'])) {
+    $post = selectOne('posts', ['id' => $_GET['id']]);
+} else {
+    $_SESSION['message'] = "Error: the post couldn't be loaded...";
+    $_SESSION['type'] = "error";
+    header("location: index.php");
+    exit();
+}
+
+$posts = selectAll('posts', ['published' => 1]);
+$topics = selectAll('topics');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +26,8 @@
     <!-- Link to css file -->
     <link rel="stylesheet" href="assets/styles/style.css">
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
-    <title>Post</title>
+    <!-- Display the title of the post and the name of the website for SEO purpose -->
+    <title><?php echo $post['title']; ?> | Ghiblog</title>
 </head>
 <body background="assets/img/background.jpg">
     <!-- Class used to make page fade into view -->
@@ -29,30 +45,11 @@
                     <div class="main-content-wrap">
                         <!-- Div tag that contains the main content of the page -->
                         <div class="main-content post">
-                            <img src="assets/img/ghibli-studios.PNG" alt="ghibli-studios">
-                            <h1 class="post-title">What is Studio Ghibli ?</h1>
+                            <img src="assets/img/<?php echo $post['image']; ?>" alt="">
+                            <h1 class="post-title"><?php echo $post['title']; ?></h1>
                             <!-- Div tag that contains the content of the post -->
                             <div class="post-content">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque harum dolorem sit quasi illum cumque?</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum error ut aut inventore maiores quis atque ducimus nobis voluptatibus quidem sint magnam debitis necessitatibus, neque consequuntur corrupti non dolorum ipsam!</p>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque facilis, aliquid accusantium natus laboriosam quos repudiandae voluptatem quidem hic laborum totam. Atque nesciunt dolore soluta deserunt cum reiciendis maiores beatae hic, ratione amet ipsam eaque quisquam harum distinctio recusandae ut!</p>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, vel?</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque harum dolorem sit quasi illum cumque?</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum error ut aut inventore maiores quis atque ducimus nobis voluptatibus quidem sint magnam debitis necessitatibus, neque consequuntur corrupti non dolorum ipsam!</p>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque facilis, aliquid accusantium natus laboriosam quos repudiandae voluptatem quidem hic laborum totam. Atque nesciunt dolore soluta deserunt cum reiciendis maiores beatae hic, ratione amet ipsam eaque quisquam harum distinctio recusandae ut!</p>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, vel?</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque harum dolorem sit quasi illum cumque?</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum error ut aut inventore maiores quis atque ducimus nobis voluptatibus quidem sint magnam debitis necessitatibus, neque consequuntur corrupti non dolorum ipsam!</p>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque facilis, aliquid accusantium natus laboriosam quos repudiandae voluptatem quidem hic laborum totam. Atque nesciunt dolore soluta deserunt cum reiciendis maiores beatae hic, ratione amet ipsam eaque quisquam harum distinctio recusandae ut!</p>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, vel?</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque harum dolorem sit quasi illum cumque?</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum error ut aut inventore maiores quis atque ducimus nobis voluptatibus quidem sint magnam debitis necessitatibus, neque consequuntur corrupti non dolorum ipsam!</p>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque facilis, aliquid accusantium natus laboriosam quos repudiandae voluptatem quidem hic laborum totam. Atque nesciunt dolore soluta deserunt cum reiciendis maiores beatae hic, ratione amet ipsam eaque quisquam harum distinctio recusandae ut!</p>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, vel?</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque harum dolorem sit quasi illum cumque?</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum error ut aut inventore maiores quis atque ducimus nobis voluptatibus quidem sint magnam debitis necessitatibus, neque consequuntur corrupti non dolorum ipsam!</p>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque facilis, aliquid accusantium natus laboriosam quos repudiandae voluptatem quidem hic laborum totam. Atque nesciunt dolore soluta deserunt cum reiciendis maiores beatae hic, ratione amet ipsam eaque quisquam harum distinctio recusandae ut!</p>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, vel?</p>
+                                <?php echo html_entity_decode($post['body']); ?>
                             </div>
                         </div>
                     </div>
@@ -60,30 +57,25 @@
                     <div class="sidebar post">
                         <div class="section popular-posts">
                             <h2 class="section-title">Popular Posts</h2>
-                            <!-- Div tag that contains the post itself -->
-                            <div class="post clear">
-                                <img src="assets/img/my-neighbor-totoro.jpg" alt="totoro">
-                                <a href="" class="title"><h4>My Neighbor Totoro</h4></a>
-                            </div>
-                            <div class="post clear">
-                                <img src="assets/img/howls-moving-castle.jpg" alt="howls-moving-castle">
-                                <a href="" class="title"><h4>Howl's Moving Castle</h4></a>
-                            </div>
-                            <div class="post clear">
-                                <img src="assets/img/spirited-away.avif" alt="spirited-away">
-                                <a href="" class="title"><h4>Spirited Away</h4></a>
-                            </div>
+                            <!-- Display the trending posts -->
+                            <?php foreach ($posts as $post): ?>
+                                <div class="post clear">
+                                    <img src="assets/img/<?php echo $post['image']; ?>" alt="">
+                                    <a href="post.php?id=<?php echo $post['id']; ?>" class="title">
+                                        <h4><?php echo $post['title']; ?></h4>
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
                         <!-- Div tag that contains the topic section -->
                         <div class="section topics">
                             <h2 class="section-title">Topics</h2>
                             <ul>
-                                <li><a href="#">Topic 1</a></li>
-                                <li><a href="#">Topic 2</a></li>
-                                <li><a href="#">Topic 3</a></li>
-                                <li><a href="#">Topic 4</a></li>
-                                <li><a href="#">Topic 5</a></li>
-                                <li><a href="#">Topic 6</a></li>
+                                <?php foreach ($topics as $topic): ?>
+                                    <li><a href="<?php echo BASE_URL . "/index.php?topic=" . $topic['id']; ?>">
+                                        <?php echo $topic['name']; ?>
+                                    </a></li>
+                                <?php endforeach; ?>
                             </ul>
                         </div>
                     </div>

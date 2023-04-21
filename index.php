@@ -1,6 +1,35 @@
 <?php 
 include("path.php");
 include(ROOT_PATH . "/app/database/topics.php");
+
+date_default_timezone_set('Europe/Paris');
+
+$posts = array();
+$carrouselPosts = getPublishedPosts(); //Get all the published posts from the database
+$postTitle = "Recent Posts";
+
+//If there is a search attribute in the url, display only the posts matching
+if (isset($_GET['search'])) {
+    //If the search attribute is empty, delete it from the URL
+    if ($_GET['search'] == "") {
+        header('location: index.php');
+        exit();
+    }
+    $posts = searchPosts($_GET['search']);
+    $postTitle = 'Results for "' . $_GET['search'] . '"';
+} else if (isset($_GET['topic'])) {
+    //If the search attribute is empty, delete it from the URL
+    if ($_GET['topic'] == "") {
+        header('location: index.php');
+        exit();
+    }
+    $topic = selectOne('topics', ['id' => $_GET['topic']]);
+    $posts = getPostsByTopic($topic['id']);
+    $postTitle = 'Posts related to "' . $topic['name'] . '"';
+} else {
+    $posts = $carrouselPosts;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,43 +65,21 @@ include(ROOT_PATH . "/app/database/topics.php");
                     <i class="fa-solid fa-chevron-left previous"></i>
                     <!-- Div tag that contains the popular posts -->
                     <div class="post-wrap">
-                        <!-- Div tags that contain the posts themselves -->
-                        <div class="post">
-                            <img src="assets/img/ghibli-studios.PNG" alt="ghibli-presentation" class="post-image">
-                            <div class="post-info">
-                                <h3><a href="#">What is Studio Ghibli ?</a></h3>
-                                <i class="far fa-user"> Theo</i>
-                                &nbsp;
-                                <i class="far fa-calendar"> Mar 29, 2023</i>
+                        <!-- Always display the trending posts -->
+                        <?php foreach ($carrouselPosts as $post): ?>
+                            <div class="post">
+                                <a href="post.php?id=<?php echo $post['id']; ?>">
+                                    <img src="assets/img/<?php echo $post['image']; ?>" alt="" class="post-image">
+                                </a>
+                                <div class="post-info">
+                                    <h3><a href="post.php?id=<?php echo $post['id']; ?>"> <?php echo $post['title']; ?></a></h3>
+                                    <i class="far fa-user"> <?php echo $post['username']; ?></i>
+                                    &nbsp;
+                                    <!-- Display the date the post was created -->
+                                    <i class="far fa-calendar"> <?php echo date('F j, Y', strtotime($post['creation_date'])); ?></i>
+                                </div>
                             </div>
-                        </div>
-                        <div class="post">
-                            <img src="assets/img/my-neighbor-totoro.jpg" alt="totoro" class="post-image">
-                            <div class="post-info">
-                                <h3><a href="#">My Neighbor Totoro</a></h3>
-                                <i class="far fa-user"> Theo</i>
-                                &nbsp;
-                                <i class="far fa-calendar"> Mar 29, 2023</i>
-                            </div>
-                        </div>
-                        <div class="post">
-                            <img src="assets/img/howls-moving-castle.jpg" alt="howls-moving-castle" class="post-image">
-                            <div class="post-info">
-                                <h3><a href="#">Howl's Moving Castle</a></h3>
-                                <i class="far fa-user"> Theo</i>
-                                &nbsp;
-                                <i class="far fa-calendar"> Mar 29, 2023</i>
-                            </div>
-                        </div>
-                        <div class="post">
-                            <img src="assets/img/spirited-away.avif" alt="spirited-away" class="post-image">
-                            <div class="post-info">
-                                <h3><a href="#">Spirited Away</a></h3>
-                                <i class="far fa-user"> Theo</i>
-                                &nbsp;
-                                <i class="far fa-calendar"> Mar 29, 2023</i>
-                            </div>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                     <i class="fa-solid fa-chevron-right next"></i>
                 </div>
@@ -81,52 +88,32 @@ include(ROOT_PATH . "/app/database/topics.php");
                 <div class="content clear">
                     <!-- Div tag that contains the main content of the page -->
                     <div class="main-content">
-                        <h1 class="recent-post-title">Recent Posts</h1>
-                        <!-- Div tag that contains the post itself -->
-                        <div class="post clear">
-                            <img src="assets/img/ghibli-studios.PNG" alt="ghibli-presentation" class="post-image">
-                            <div class="post-preview">
-                                <h2><a href="#">What is Studio Ghibli ?</a></h2>
-                                <i class="far fa-user"> Theo</i>
-                                &nbsp;
-                                <i class="far calendar"> Mar 30, 2023</i>
-                                <p class="preview-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed molestie nulla. Pellentesque blandit mauris magna, et pretium risus elementum.</p>
-                                <a href="#" class="button">Read More</a>
+                        <h1 class="recent-post-title"><?php echo $postTitle ?></h1>
+                        <!-- If there are no posts to display, display a massage, else display the posts -->
+                        <?php if (count($posts) == 0): ?>
+                            <div class="no-post clear">
+                                <h2>No post matches your query...</h2>
                             </div>
-                        </div>
-                        <div class="post clear">
-                            <img src="assets/img/my-neighbor-totoro.jpg" alt="totoro" class="post-image">
-                            <div class="post-preview">
-                                <h2><a href="#">My Neighbor Totoro</a></h2>
-                                <i class="far fa-user"> Theo</i>
-                                &nbsp;
-                                <i class="far calendar"> Mar 30, 2023</i>
-                                <p class="preview-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed molestie nulla. Pellentesque blandit mauris magna, et pretium risus elementum.</p>
-                                <a href="#" class="button">Read More</a>
-                            </div>
-                        </div>
-                        <div class="post clear">
-                            <img src="assets/img/howls-moving-castle.jpg" alt="howls-moving-castle" class="post-image">
-                            <div class="post-preview">
-                                <h2><a href="#">Howl's Moving Castle</a></h2>
-                                <i class="far fa-user"> Theo</i>
-                                &nbsp;
-                                <i class="far calendar"> Mar 30, 2023</i>
-                                <p class="preview-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed molestie nulla. Pellentesque blandit mauris magna, et pretium risus elementum.</p>
-                                <a href="#" class="button">Read More</a>
-                            </div>
-                        </div>
-                        <div class="post clear">
-                            <img src="assets/img/spirited-away.avif" alt="spirited-away" class="post-image">
-                            <div class="post-preview">
-                                <h2><a href="#">Spirited Away</a></h2>
-                                <i class="far fa-user"> Theo</i>
-                                &nbsp;
-                                <i class="far calendar"> Mar 30, 2023</i>
-                                <p class="preview-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed molestie nulla. Pellentesque blandit mauris magna, et pretium risus elementum.</p>
-                                <a href="#" class="button">Read More</a>
-                            </div>
-                        </div>
+                        <?php else: ?>
+                            <?php foreach ($posts as $post): ?>
+                                <div class="post clear">
+                                    <a href="post.php?id=<?php echo $post['id']; ?>">
+                                        <img src="assets/img/<?php echo $post['image']; ?>" alt="" class="post-image">
+                                    </a>
+                                    <div class="post-preview">
+                                        <h2><a href="post.php?id=<?php echo $post['id']; ?>"><?php echo $post['title']; ?></a></h2>
+                                        <i class="far fa-user"> <?php echo $post['username']; ?></i>
+                                        &nbsp;
+                                        <!-- Display the date the post was created -->
+                                        <i class="far calendar"> <?php echo date('F j, Y', strtotime($post['creation_date'])); ?></i>
+                                        <!-- Display a preview of the post -->
+                                        <p class="preview-text"><?php echo html_entity_decode(substr($post['body'], 0, 250) . "..."); ?></p>
+                                        <a href="post.php?id=<?php echo $post['id']; ?>" class="button">Read More</a>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                        
                     </div>
 
                     <!-- Div tag that contains the sidebar -->
@@ -134,8 +121,9 @@ include(ROOT_PATH . "/app/database/topics.php");
                         <!-- Div tag that contains the search bar -->
                         <div class="section search">
                             <h2 class="section-title">Search</h2>
-                            <form action="index.php" method="post">
-                                <input type="text" name="search-input" class="text-input" placeholder="Search...">
+                            <!-- Search for specific posts (GET method so the user can modify his query directly in the URL) -->
+                            <form action="index.php" method="get">
+                                <input type="text" name="search" class="text-input" placeholder="Search...">
                             </form>
                         </div>
                         <!-- Div tag that contains the topic section -->
@@ -144,7 +132,9 @@ include(ROOT_PATH . "/app/database/topics.php");
                             <ul>
                                 <!-- Display all topics from the database -->
                                 <?php foreach ($topics as $key => $topic): ?>
-                                    <li><a href="#"><?php echo $topic['name']; ?></a></li>
+                                    <li><a href="<?php echo BASE_URL . "/index.php?topic=" . $topic['id']; ?>">
+                                        <?php echo $topic['name']; ?>
+                                    </a></li>
                                 <?php endforeach; ?>      
                             </ul>
                         </div>
