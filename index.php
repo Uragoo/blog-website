@@ -1,6 +1,7 @@
 <?php 
 include("path.php");
 include(ROOT_PATH . "/app/database/topics.php");
+include(ROOT_PATH . "/app/database/likes.php");
 
 date_default_timezone_set('Europe/Paris');
 
@@ -41,7 +42,6 @@ if (isset($_GET['search'])) {
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Work+Sans:wght@300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7f5f03b58c.js" crossorigin="anonymous"></script>
     <!-- Link to css file -->
-    <!-- <link rel="stylesheet" href="<?php echo ROOT_PATH . "/assets/styles/style.css" ?> "> -->
     <link rel="stylesheet" href="assets/styles/style.css">
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <title>Ghiblog</title>
@@ -77,6 +77,24 @@ if (isset($_GET['search'])) {
                                     &nbsp;
                                     <!-- Display the date the post was created -->
                                     <i class="far fa-calendar"> <?php echo date('F j, Y', strtotime($post['creation_date'])); ?></i>
+                                    <div class="popularity">
+                                        <?php if (isset($_SESSION['id'])): ?>
+                                            <!-- Check if the user already likes the post -->
+                                            <?php if (alreadyLiked($post['id'], $_SESSION['id'])): ?>
+                                                <a href="" class="unlike" id="<?php echo $post['id']; ?>">
+                                                    <i class="fas fa-heart"> <?php echo $post['likes']; ?></i>
+                                                </a>
+                                            <?php else: ?>
+                                                <a href="" class="like" id="<?php echo $post['id']; ?>">
+                                                    <i class="far fa-heart"> <?php echo $post['likes']; ?></i>
+                                                </a>
+                                            <?php endif; ?> 
+                                        <?php else: ?>
+                                            <a href="" class="like" id="<?php echo $post['id']; ?>">
+                                                <i class="far fa-heart"> <?php echo $post['likes']; ?></i>
+                                            </a>
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -105,9 +123,27 @@ if (isset($_GET['search'])) {
                                         <i class="far fa-user"> <?php echo $post['username']; ?></i>
                                         &nbsp;
                                         <!-- Display the date the post was created -->
-                                        <i class="far calendar"> <?php echo date('F j, Y', strtotime($post['creation_date'])); ?></i>
+                                        <i class="far fa-calendar"> <?php echo date('F j, Y', strtotime($post['creation_date'])); ?></i>
                                         <!-- Display a preview of the post -->
                                         <p class="preview-text"><?php echo html_entity_decode(substr($post['body'], 0, 250) . "..."); ?></p>
+                                        <div class="popularity">
+                                            <?php if (isset($_SESSION['id'])): ?>
+                                                <!-- Check if the user already likes the post -->
+                                                <?php if (alreadyLiked($post['id'], $_SESSION['id'])): ?>
+                                                    <a href="" class="unlike" id="<?php echo $post['id']; ?>">
+                                                        <i class="fas fa-heart"> <?php echo $post['likes']; ?></i>
+                                                    </a>
+                                                <?php else: ?>
+                                                    <a href="" class="like" id="<?php echo $post['id']; ?>">
+                                                        <i class="far fa-heart"> <?php echo $post['likes']; ?></i>
+                                                    </a>
+                                                <?php endif; ?> 
+                                            <?php else: ?>
+                                                <a href="" class="like" id="<?php echo $post['id']; ?>">
+                                                    <i class="far fa-heart"> <?php echo $post['likes']; ?></i>
+                                                </a>
+                                            <?php endif; ?>
+                                        </div>
                                         <a href="post.php?id=<?php echo $post['id']; ?>" class="button">Read More</a>
                                     </div>
                                 </div>

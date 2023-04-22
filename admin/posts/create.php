@@ -47,7 +47,7 @@ adminOnly(); //Redirect any user who is not an admin
                         <input type="text" name="title" class="text-input" value="<?php echo $title; ?>">
                     </div>
                     <div>
-                        <label><h4>Post Image</h4></label>
+                        <label><h4>Post Image (Landscape format recommended)</h4></label>
                         <input type="file" class="text-input" name="image" accept="image/*">
                     </div>
                     <div>

@@ -164,11 +164,3 @@ if (isset($_GET['published']) && isset($_GET['post_id'])) {
     header("location: " . BASE_URL . "/admin/posts/index.php");
     exit(); 
 }
-
-function like(){
-    usersOnly();
-}
-
-function unlike() {
-
-}

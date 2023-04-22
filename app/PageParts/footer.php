@@ -17,7 +17,7 @@
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="https://github.com/Uragoo/blog-website"><i class="fab fa-github"></i></a>
             </div>
         </div>
         <!-- Div tag that contains the link section of the footer -->
@@ -31,7 +31,7 @@
                     <li>Team</li>
                 </a>
                 <a href="#">
-                    <li>Terms and Contitions</li>
+                    <li>Terms and Conditions</li>
                 </a>
             </ul>
         </div>

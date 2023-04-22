@@ -1,10 +1,13 @@
 // Script to toggle the menu on small devices when the menu icon is pressed
 $(function() {
+    // When the user click on the menu icon (only for small devices)
     $('.menu-icon').on('click', function() {
+        //Display the navigation bar
         $('.nav').toggleClass('displaying');
         $('.nav ul').toggleClass('displaying');
     });
 
+    // JavaScript for the carrousel (given by SlickJs)
     $('.post-wrap').slick({
         slidesToShow: 3,
         slidesToScroll: 1,
@@ -36,15 +39,78 @@ $(function() {
                 slidesToScroll: 1
               }
             }
-            // You can unslick at a given breakpoint now by adding:
-            // settings: "unslick"
-            // instead of a settings object
           ]
       });
 
+      // When the user clicks on like in the index page
+      $('.like').click(function() {
+        var post_id = $(this).attr('id'); //Get the id of the post
+        //Send informations to like the post in the database
+        $.ajax({
+          type: 'post',
+          async: false,
+          data: {
+            'liked': 1,
+            'post_id': post_id
+          }
+        })
+      });
+
+      // When the user clicks on unlike in the index page
+      $('.unlike').click(function() {
+        var post_id = $(this).attr('id'); //Get the id of the post
+        //Send informations to unlike the post in the database
+        $.ajax({
+          type: 'post',
+          async: false,
+          data: {
+            'unliked': 1,
+            'post_id': post_id
+          }
+        })
+      });
+
+      // // When the user clicks on like in the post page
+      // $('.p_like').click(function() {
+      //   alert('You clicked on ');
+      //   var post_id = $(this).attr('id'); //Get the id of the post
+        
+      //   //Send informations to like the post in the database
+      //   $.ajax({
+      //     url: 'index.php?id=' + post_id,
+      //     type: 'post',
+      //     async: false,
+      //     data: {
+      //       'liked': 1,
+      //       'post_id': post_id
+      //     },
+      //     success:function(){
+
+      //     }
+      //   })
+      // });
+
+      // // When the user clicks on unlike in the post page
+      // $('.p_unlike').click(function() {
+      //   var post_id = $(this).attr('id'); //Get the id of the post
+      //   //Send informations to unlike the post in the database
+      //   $.ajax({
+      //     url: 'index.php',
+      //     type: 'post',
+      //     async: false,
+      //     data: {
+      //       'unliked': 1,
+      //       'post_id': post_id
+      //     },
+      //     success:function(){
+
+      //     }
+      //   })
+      // });
 
 });
 
+//Integrated text editor
 ClassicEditor.create( document.querySelector( '#editor' ) ), {
   toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
   heading: {

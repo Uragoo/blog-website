@@ -1,6 +1,7 @@
 <?php 
 include("path.php"); 
 include(ROOT_PATH . "/app/database/posts.php");
+include(ROOT_PATH . "/app/database/likes.php");
 
 if (isset($_GET['id'])) {
     $post = selectOne('posts', ['id' => $_GET['id']]);
@@ -37,6 +38,9 @@ $topics = selectAll('topics');
             <!-- Header of the website -->
             <?php include(ROOT_PATH . "/app/PageParts/header.php"); ?>
 
+            <!-- Display a message whenever there is one in the session -->
+            <?php include(ROOT_PATH . "/app/PageParts/messages.php"); ?>
+
             <!-- Div tag that wrap the entire content of the page -->
             <div class="page-wrap">
                 <!-- Div tag that contains the content of the page -->
@@ -45,7 +49,29 @@ $topics = selectAll('topics');
                     <div class="main-content-wrap">
                         <!-- Div tag that contains the main content of the page -->
                         <div class="main-content post">
+
+                            <!-- Display a message whenever there is one in the session -->
+                            <?php include(ROOT_PATH . "/app/PageParts/messages.php"); ?>
+
                             <img src="assets/img/<?php echo $post['image']; ?>" alt="">
+                            <div class="popularity">
+                                <?php if (isset($_SESSION['id'])): ?>
+                                    <!-- Check if the user already likes the post -->
+                                    <?php if (alreadyLiked($post['id'], $_SESSION['id'])): ?>
+                                        <a href="" class="unlike" id="<?php echo $post['id']; ?>">
+                                            <i class="fas fa-heart"> <?php echo $post['likes']; ?></i>
+                                        </a>
+                                    <?php else: ?>
+                                        <a href="" class="like" id="<?php echo $post['id']; ?>">
+                                            <i class="far fa-heart"> <?php echo $post['likes']; ?></i>
+                                        </a>
+                                    <?php endif; ?> 
+                                <?php else: ?>
+                                    <a href="" class="like" id="<?php echo $post['id']; ?>">
+                                        <i class="far fa-heart"> <?php echo $post['likes']; ?></i>
+                                    </a>
+                                <?php endif; ?>
+                            </div>
                             <h1 class="post-title"><?php echo $post['title']; ?></h1>
                             <!-- Div tag that contains the content of the post -->
                             <div class="post-content">
@@ -89,7 +115,7 @@ $topics = selectAll('topics');
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
             
             <!-- JavaScript -->
-            <script src="assets/js/scripts.js"></script>
+            <script src="assets/js/test.js"></script>
         </div>
     </div>
     
