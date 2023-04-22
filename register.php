@@ -1,6 +1,7 @@
 <?php 
 include("path.php");
 include(ROOT_PATH . "/app/database/users.php");
+guestsOnly();
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -2,6 +2,7 @@
 
 include(ROOT_PATH . "/app/database/database.php");
 include(ROOT_PATH . "/app/database/formValidation.php");
+include(ROOT_PATH . "/app/database/middleware.php");
 
 $table = 'users';
 $errors = array();
@@ -85,6 +86,7 @@ if (isset($_POST['login-button'])) {
 
 //If the create form is sent, create a new topic in the database
 if (isset($_POST['create-user'])) {
+    adminOnly(); //Redirect any user who is not an admin
     $errors = registerValidation($_POST);
 
     if (count($errors) === 0) {
@@ -118,6 +120,7 @@ if (isset($_POST['create-user'])) {
 
 //Delete the user from the database when there is a GET delete_id attribute
 if (isset($_GET['delete_id'])) {
+    adminOnly(); //Redirect any user who is not an admin
     $count = deleteRow($table, $_GET['delete_id']);
     $_SESSION['message'] = "User successfully deleted";
     $_SESSION['type'] = "success";
@@ -137,6 +140,7 @@ if (isset($_GET['id'])) {
 
 //If the edit form is sent, update the post in the database
 if (isset($_POST['update-user'])) {
+    adminOnly(); //Redirect any user who is not an admin
     $errors = registerValidation($_POST);
 
     if (count($errors) === 0) {

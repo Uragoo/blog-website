@@ -1,6 +1,7 @@
 <?php
 include(ROOT_PATH . "/app/database/database.php");
 include(ROOT_PATH . "/app/database/formValidation.php");
+include(ROOT_PATH . "/app/database/middleware.php");
 
 
 $table = 'posts';
@@ -18,6 +19,7 @@ $published = "";
 
 //If the create form is sent, create a new post in the database
 if (isset($_POST['create-post'])) {
+    adminOnly(); //Redirect any user who is not an admin
     $errors = postValidation($_POST);
 
     //Check if the user uploaded an image
@@ -82,6 +84,7 @@ if (isset($_GET['id'])) {
 
 //If the edit form is sent, update the post in the database
 if (isset($_POST['update-post'])) {
+    adminOnly(); //Redirect any user who is not an admin
     $errors = postValidation($_POST);
 
     //Check if the user uploaded an image
@@ -137,6 +140,7 @@ if (isset($_POST['update-post'])) {
 
 ////Delete the selected post from the database when there is a GET delete_id attribute
 if (isset($_GET['delete_id'])) {
+    adminOnly(); //Redirect any user who is not an admin
     $count = deleteRow($table, $_GET['delete_id']);
     $_SESSION['message'] = "Post successfully deleted !";
     $_SESSION['type'] = "success";
@@ -146,6 +150,7 @@ if (isset($_GET['delete_id'])) {
 
 ////Publish or unpublish the selected post when there is a GET published and post_id attribute
 if (isset($_GET['published']) && isset($_GET['post_id'])) {
+    adminOnly(); //Redirect any user who is not an admin
     $published = $_GET['published'];
     $post_id = $_GET['post_id'];
 
@@ -158,4 +163,12 @@ if (isset($_GET['published']) && isset($_GET['post_id'])) {
     $_SESSION['type'] = "success";
     header("location: " . BASE_URL . "/admin/posts/index.php");
     exit(); 
+}
+
+function like(){
+    usersOnly();
+}
+
+function unlike() {
+
 }

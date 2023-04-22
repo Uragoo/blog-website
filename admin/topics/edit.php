@@ -1,6 +1,7 @@
 <?php 
 include("../../path.php");
 include(ROOT_PATH . "/app/database/topics.php");
+adminOnly(); //Redirect any user who is not an admin
 ?>
 <!DOCTYPE html>
 <html lang="en">

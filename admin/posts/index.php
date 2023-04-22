@@ -2,6 +2,7 @@
 <?php 
 include("../../path.php"); 
 include(ROOT_PATH . "/app/database/posts.php");
+adminOnly(); //Redirect any user who is not an admin
 ?>
 <!DOCTYPE html>
 <html lang="en">

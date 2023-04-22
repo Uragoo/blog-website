@@ -1,6 +1,7 @@
 <?php
 include(ROOT_PATH . "/app/database/database.php");
 include(ROOT_PATH . "/app/database/formValidation.php");
+include(ROOT_PATH . "/app/database/middleware.php");
 
 $table = 'topics';
 $errors = array();
@@ -11,8 +12,8 @@ $topics = selectAll($table);
 
 //If the create form is sent, create a new topic in the database
 if (isset($_POST['create-topic'])) {
-    //Check for errors in the form
-    $errors = topicValidation($_POST);
+    adminOnly(); //Redirect any user who is not an admin
+    $errors = topicValidation($_POST); //Check for errors in the form
 
     if (count($errors) === 0) {
         unset($_POST['create-topic']); //Unset unwanted keys to create the user
@@ -42,8 +43,8 @@ if (isset($_GET['id'])) {
 
 //If the edit form is sent, update the topic in the database
 if (isset($_POST['update-topic'])) {
-    //Check for errors in the form
-    $errors = topicValidation($_POST);
+    adminOnly(); //Redirect any user who is not an admin
+    $errors = topicValidation($_POST); //Check for errors in the form
 
     if (count($errors) === 0) {
         $id = $_POST['id'];
@@ -66,6 +67,7 @@ if (isset($_POST['update-topic'])) {
 
 //Delete the topic from the database when there is a GET delete_id attribute
 if (isset($_GET['delete_id'])) {
+    adminOnly(); //Redirect any user who is not an admin
     $id = $_GET['delete_id'];
     $count = deleteRow($table, $id);
     $_SESSION['message'] = "Topic successfully deleted !";
