@@ -77,24 +77,8 @@ if (isset($_GET['search'])) {
                                     &nbsp;
                                     <!-- Display the date the post was created -->
                                     <i class="far fa-calendar"> <?php echo date('F j, Y', strtotime($post['creation_date'])); ?></i>
-                                    <div class="popularity">
-                                        <?php if (isset($_SESSION['id'])): ?>
-                                            <!-- Check if the user already likes the post -->
-                                            <?php if (alreadyLiked($post['id'], $_SESSION['id'])): ?>
-                                                <a href="" class="unlike" id="<?php echo $post['id']; ?>">
-                                                    <i class="fas fa-heart"> <?php echo $post['likes']; ?></i>
-                                                </a>
-                                            <?php else: ?>
-                                                <a href="" class="like" id="<?php echo $post['id']; ?>">
-                                                    <i class="far fa-heart"> <?php echo $post['likes']; ?></i>
-                                                </a>
-                                            <?php endif; ?> 
-                                        <?php else: ?>
-                                            <a href="" class="like" id="<?php echo $post['id']; ?>">
-                                                <i class="far fa-heart"> <?php echo $post['likes']; ?></i>
-                                            </a>
-                                        <?php endif; ?>
-                                    </div>
+                                    <!-- Part containing the likes display -->
+                                    <?php include(ROOT_PATH . "/app/PageParts/popularity.php"); ?>
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -126,24 +110,8 @@ if (isset($_GET['search'])) {
                                         <i class="far fa-calendar"> <?php echo date('F j, Y', strtotime($post['creation_date'])); ?></i>
                                         <!-- Display a preview of the post -->
                                         <p class="preview-text"><?php echo html_entity_decode(substr($post['body'], 0, 250) . "..."); ?></p>
-                                        <div class="popularity">
-                                            <?php if (isset($_SESSION['id'])): ?>
-                                                <!-- Check if the user already likes the post -->
-                                                <?php if (alreadyLiked($post['id'], $_SESSION['id'])): ?>
-                                                    <a href="" class="unlike" id="<?php echo $post['id']; ?>">
-                                                        <i class="fas fa-heart"> <?php echo $post['likes']; ?></i>
-                                                    </a>
-                                                <?php else: ?>
-                                                    <a href="" class="like" id="<?php echo $post['id']; ?>">
-                                                        <i class="far fa-heart"> <?php echo $post['likes']; ?></i>
-                                                    </a>
-                                                <?php endif; ?> 
-                                            <?php else: ?>
-                                                <a href="" class="like" id="<?php echo $post['id']; ?>">
-                                                    <i class="far fa-heart"> <?php echo $post['likes']; ?></i>
-                                                </a>
-                                            <?php endif; ?>
-                                        </div>
+                                        <!-- Part containing the likes display -->
+                                        <?php include(ROOT_PATH . "/app/PageParts/popularity.php"); ?>
                                         <a href="post.php?id=<?php echo $post['id']; ?>" class="button">Read More</a>
                                     </div>
                                 </div>

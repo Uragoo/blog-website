@@ -38,6 +38,10 @@ header {
     margin-bottom: 1.5rem;
     margin-top: 1.5rem;
 }
+.admin-content .post-link:hover {
+    color: rgb(25, 116, 41);
+    font-weight: bold;
+}
 table {
     width: 100%;
     border-collapse: collapse;

@@ -120,7 +120,6 @@ function updateRow($table, $id, $data) {
         $i++;
     }
     $sql = $sql . "WHERE id=?";
-    displayValue($sql);
     $data['id'] = $id; //Adding the id value to the id key
     $query = executeQuery($sql, $data);
     return $query->affected_rows;
@@ -132,16 +131,6 @@ function deleteRow($table, $id) {
     $sql = "DELETE FROM $table WHERE id=?";
     $query = executeQuery($sql, ['id' => $id]);
     return $query->affected_rows;
-}
-
-//function that fetch all the published posts with the username of its author
-function getPublishedPosts() {
-    global $connection;
-    $sql = "SELECT p.*, u.username FROM posts AS p JOIN users AS u ON p.user_id = u.id WHERE p.published = ?";
-
-    $query = executeQuery($sql, ['published' => 1]);
-    $results = $query->get_result()->fetch_all(MYSQL_ASSOC); // Fetching all the results of the query
-    return $results;
 }
 
 //function that fetch all the published posts that correspond with the terms entered by the user in the search bar
@@ -188,7 +177,7 @@ function getPopularPosts() {
     }
 
     //if the number of posts is not 6, we add posts with no likes
-    $posts = getPublishedPosts();
+    $posts = getRecentPosts();
     $n = count($results);
     if ($n != 6) {
         //If the total number of posts is less than 6, add all the missing posts

@@ -12,7 +12,7 @@ if (isset($_GET['id'])) {
     exit();
 }
 
-$posts = selectAll('posts', ['published' => 1]);
+$popularPosts = getPopularPosts();
 $topics = selectAll('topics');
 ?>
 <!DOCTYPE html>
@@ -54,24 +54,8 @@ $topics = selectAll('topics');
                             <?php include(ROOT_PATH . "/app/PageParts/messages.php"); ?>
 
                             <img src="assets/img/<?php echo $post['image']; ?>" alt="">
-                            <div class="popularity">
-                                <?php if (isset($_SESSION['id'])): ?>
-                                    <!-- Check if the user already likes the post -->
-                                    <?php if (alreadyLiked($post['id'], $_SESSION['id'])): ?>
-                                        <a href="" class="unlike" id="<?php echo $post['id']; ?>">
-                                            <i class="fas fa-heart"> <?php echo $post['likes']; ?></i>
-                                        </a>
-                                    <?php else: ?>
-                                        <a href="" class="like" id="<?php echo $post['id']; ?>">
-                                            <i class="far fa-heart"> <?php echo $post['likes']; ?></i>
-                                        </a>
-                                    <?php endif; ?> 
-                                <?php else: ?>
-                                    <a href="" class="like" id="<?php echo $post['id']; ?>">
-                                        <i class="far fa-heart"> <?php echo $post['likes']; ?></i>
-                                    </a>
-                                <?php endif; ?>
-                            </div>
+                            <!-- Part containing the likes display -->
+                            <?php include(ROOT_PATH . "/app/PageParts/popularity.php"); ?>
                             <h1 class="post-title"><?php echo $post['title']; ?></h1>
                             <!-- Div tag that contains the content of the post -->
                             <div class="post-content">
@@ -84,7 +68,7 @@ $topics = selectAll('topics');
                         <div class="section popular-posts">
                             <h2 class="section-title">Popular Posts</h2>
                             <!-- Display the trending posts -->
-                            <?php foreach ($posts as $post): ?>
+                            <?php foreach ($popularPosts as $post): ?>
                                 <div class="post clear">
                                     <img src="assets/img/<?php echo $post['image']; ?>" alt="">
                                     <a href="post.php?id=<?php echo $post['id']; ?>" class="title">
@@ -115,7 +99,7 @@ $topics = selectAll('topics');
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
             
             <!-- JavaScript -->
-            <script src="assets/js/test.js"></script>
+            <script src="<?php echo ROOT_PATH . "/assets/js/test.js" ?>"></script>
         </div>
     </div>
     

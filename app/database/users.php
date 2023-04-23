@@ -97,7 +97,6 @@ if (isset($_POST['create-user'])) {
         } else {
             $_POST['admin'] = 0;
         }
-        displayValue($_POST);
         $user_id = createRow($table, $_POST);
         $_SESSION['message'] = "User successfully created";
         $_SESSION['type'] = "success";

@@ -7,7 +7,7 @@ $(function() {
         $('.nav ul').toggleClass('displaying');
     });
 
-    // JavaScript for the carrousel (given by SlickJs)
+    // JavaScript for the carrousel
     $('.post-wrap').slick({
         slidesToShow: 3,
         slidesToScroll: 1,
@@ -15,6 +15,7 @@ $(function() {
         autoplaySpeed: 2000,
         nextArrow: $('.next'),
         prevArrow: $('.previous'),
+        //Responsivity of the carrousel
         responsive: [
             {
               breakpoint: 1024,
@@ -42,8 +43,9 @@ $(function() {
           ]
       });
 
-      // When the user clicks on like in the index page
+      // When the user clicks on like
       $('.like').click(function() {
+        alert('You clicked');
         var post_id = $(this).attr('id'); //Get the id of the post
         //Send informations to like the post in the database
         $.ajax({
@@ -56,7 +58,7 @@ $(function() {
         })
       });
 
-      // When the user clicks on unlike in the index page
+      // When the user clicks on unlike
       $('.unlike').click(function() {
         var post_id = $(this).attr('id'); //Get the id of the post
         //Send informations to unlike the post in the database
@@ -69,44 +71,6 @@ $(function() {
           }
         })
       });
-
-      // // When the user clicks on like in the post page
-      // $('.p_like').click(function() {
-      //   alert('You clicked on ');
-      //   var post_id = $(this).attr('id'); //Get the id of the post
-        
-      //   //Send informations to like the post in the database
-      //   $.ajax({
-      //     url: 'index.php?id=' + post_id,
-      //     type: 'post',
-      //     async: false,
-      //     data: {
-      //       'liked': 1,
-      //       'post_id': post_id
-      //     },
-      //     success:function(){
-
-      //     }
-      //   })
-      // });
-
-      // // When the user clicks on unlike in the post page
-      // $('.p_unlike').click(function() {
-      //   var post_id = $(this).attr('id'); //Get the id of the post
-      //   //Send informations to unlike the post in the database
-      //   $.ajax({
-      //     url: 'index.php',
-      //     type: 'post',
-      //     async: false,
-      //     data: {
-      //       'unliked': 1,
-      //       'post_id': post_id
-      //     },
-      //     success:function(){
-
-      //     }
-      //   })
-      // });
 
 });
 

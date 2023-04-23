@@ -7,8 +7,8 @@ if (isset($_POST['liked'])) {
     usersOnly(); //Restrict access to loged in users
     $like = createRow($table, ['post_id' => $_POST['post_id'], 'user_id' => $_SESSION['id']]); //Create the like in the database
     $post = selectOne("posts", ['id' => $_POST['post_id']]); //Select the post
-    $n = $post['likes']; //Get the previous like number
-    $like = updateRow("posts", $post['id'], ['likes' => $n + 1]); //Update the like number
+    $n = $post['likes'] + 1; //Get the previous like number
+    $like = updateRow("posts", $post['id'], ['likes' => $n]); //Update the like number
 }
 
 //Unlike a post

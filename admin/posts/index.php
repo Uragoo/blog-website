@@ -53,7 +53,9 @@ adminOnly(); //Redirect any user who is not an admin
                         <?php foreach ($posts as $key => $post): ?>
                             <tr>
                                 <td><?php echo $key + 1; ?></td>
-                                <td><a href="<?php BASE_URL . '/post.php?id=' . $post['id']; ?>"><?php echo $post['title']; ?></a></td>
+                                <td><a href="<?php echo BASE_URL . '/post.php?id=' . $post['id']; ?>" class="post-link">
+                                    <?php echo $post['title']; ?>
+                                </a></td>
                                 <td>Théo</td>
                                 <td><a href="edit.php?id=<?php echo $post['id']; ?> " class="button edit">Edit</a></td>
                                 <td><a href="edit.php?delete_id=<?php echo $post['id']; ?>" class="button delete">Delete</a></td>
