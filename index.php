@@ -6,7 +6,7 @@ include(ROOT_PATH . "/app/database/likes.php");
 date_default_timezone_set('Europe/Paris');
 
 $posts = array();
-$carrouselPosts = getPublishedPosts(); //Get all the published posts from the database
+$popularPosts = getPopularPosts(); //Get all the published posts from the database
 $postTitle = "Recent Posts";
 
 //If there is a search attribute in the url, display only the posts matching
@@ -28,7 +28,7 @@ if (isset($_GET['search'])) {
     $posts = getPostsByTopic($topic['id']);
     $postTitle = 'Posts related to "' . $topic['name'] . '"';
 } else {
-    $posts = $carrouselPosts;
+    $posts = getRecentPosts();
 }
 
 ?>
@@ -66,7 +66,7 @@ if (isset($_GET['search'])) {
                     <!-- Div tag that contains the popular posts -->
                     <div class="post-wrap">
                         <!-- Always display the trending posts -->
-                        <?php foreach ($carrouselPosts as $post): ?>
+                        <?php foreach ($popularPosts as $post): ?>
                             <div class="post">
                                 <a href="post.php?id=<?php echo $post['id']; ?>">
                                     <img src="assets/img/<?php echo $post['image']; ?>" alt="" class="post-image">

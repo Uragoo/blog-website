@@ -14,15 +14,21 @@ function SecurizeString_ForSQL($string) {
 }
 
 //Execute a query to our SQL database
-function executeQuery($sql, $data) {
+function executeQuery($sql, $data=NULL) {
     global $connection;
-    $query = $connection->prepare($sql); //Preparation of the query
-    $values = array_values($data); //Fetching the conditions 
-    $types = str_repeat('s', count($values)); //Creating value types (all str here because sql is smart and will replace it)
-    //Binding condition values into the query (prevent SQL injection)
-    $query->bind_param($types, ...$values); //...$values --> spread all values like : $admin, $username, ...
-    $query->execute(); //Execution of the query
-    return $query;
+    if ($data == NULL) {
+        $query = $connection->prepare($sql);
+        $query->execute(); //Execution of the query
+        return $query;
+    } else {
+        $query = $connection->prepare($sql); //Preparation of the query
+        $values = array_values($data); //Fetching the conditions 
+        $types = str_repeat('s', count($values)); //Creating value types (all str here because sql is smart and will replace it)
+        //Binding condition values into the query (prevent SQL injection)
+        $query->bind_param($types, ...$values); //...$values --> spread all values like : $admin, $username, ...
+        $query->execute(); //Execution of the query
+        return $query;
+    }
 }
 
 //For developpement purpose
@@ -128,7 +134,7 @@ function deleteRow($table, $id) {
     return $query->affected_rows;
 }
 
-//function that fetches all the published posts with the username of its author
+//function that fetch all the published posts with the username of its author
 function getPublishedPosts() {
     global $connection;
     $sql = "SELECT p.*, u.username FROM posts AS p JOIN users AS u ON p.user_id = u.id WHERE p.published = ?";
@@ -138,7 +144,7 @@ function getPublishedPosts() {
     return $results;
 }
 
-//function that fetches all the published posts that correspond with the terms entered by the user in the search bar
+//function that fetch all the published posts that correspond with the terms entered by the user in the search bar
 function searchPosts($search) {
     global $connection;
     $term = '%' . $search . '%';
@@ -150,13 +156,74 @@ function searchPosts($search) {
     return $results;
 }
 
-//function that fetches all the posts related to a specific topic
+//function that fetch all the posts related to a specific topic
 function getPostsByTopic($topic) {
     global $connection;
     $sql = "SELECT p.*, u.username FROM posts AS p JOIN users AS u ON p.user_id = u.id 
     WHERE p.published = ? AND topic_id = ?";
 
     $query = executeQuery($sql, ['published' => 1, 'topic_id' => $topic]);
+    $results = $query->get_result()->fetch_all(MYSQL_ASSOC); // Fetching all the results of the query
+    return $results;
+}
+
+//function that fetch the 6 most popular posts based on the number of likes from the database
+function getPopularPosts() {
+    global $connection;
+    //Fetch the posts with the more likes
+    $sql = "SELECT post_id, count(post_id) AS count FROM likes GROUP BY post_id ORDER BY count DESC LIMIT 6";
+    $query = executeQuery($sql);
+    $posts = $query->get_result()->fetch_all(MYSQL_ASSOC);
+
+    //Fetch the post themselves
+    $sql = "SELECT p.*, u.username FROM posts AS p JOIN users AS u ON p.user_id = u.id WHERE p.published = ? AND p.id = ?";
+    $temp = array();
+    foreach ($posts as $post) {
+        $query = executeQuery($sql, ['published' => 1, 'id' => $post['post_id']]);
+        array_push($temp, $query->get_result()->fetch_all(MYSQL_ASSOC));  
+    }
+    $results = array();
+    foreach ($temp as $it) {
+        array_push($results, $it[0]);
+    }
+
+    //if the number of posts is not 6, we add posts with no likes
+    $posts = getPublishedPosts();
+    $n = count($results);
+    if ($n != 6) {
+        //If the total number of posts is less than 6, add all the missing posts
+        if (count($posts) < 6) {
+            foreach ($posts as $post) {
+                if(!in_array($post, $results)) {
+                    array_push($results, $post);
+                    $n++;
+                }
+            }
+        } else {
+            //else, add the number required to make it 6
+            foreach ($posts as $post) {
+                if ($n != 6) {
+                    if(!in_array($post, $results)) {
+                        array_push($results, $post);
+                        $n++;
+                    }
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+    
+    return $results;
+    
+}
+
+//function that fetch in the database all published posts order by the recent ones to the olders
+function getRecentPosts() {
+    global $connection;
+    $sql = "SELECT p.*, u.username FROM posts AS p JOIN users AS u ON p.user_id = u.id WHERE p.published = ? ORDER BY p.creation_date DESC";
+
+    $query = executeQuery($sql, ['published' => 1]);
     $results = $query->get_result()->fetch_all(MYSQL_ASSOC); // Fetching all the results of the query
     return $results;
 }
