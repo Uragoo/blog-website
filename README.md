@@ -11,4 +11,4 @@ Don't forget to change your account name and password for the connection to your
 
 # Useful information
 Password used to log into the different accounts in our database: 1234
-We tested the website on Microsoft Edge and Google Chrome [On PC]
+We tested the website on Microsoft Edge [On PC]
