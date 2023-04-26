@@ -14,5 +14,4 @@ Password used to log into the different accounts in our database: 1234
 We tested the website on Microsoft Edge [On PC]
 
 # Things to watch out for
-When you choose to edit a blog post you will need to reupload the image
-When liking a blog post you can only like it when you're on the home page, it won't work if you're on the post's page
+When you choose to edit a blog post you will need to reupload the image. When liking a blog post you can only like it when you're on the home page, it won't work if you're on the post's page
