@@ -43,7 +43,7 @@ adminOnly(); //Redirect any user who is not an admin
 
                 <table>
                     <thead>
-                        <th>N°</th>
+                        <th>Author ID</th>
                         <th>Username</th>
                         <th>Email</th>
                         <th>Role</th>
@@ -52,7 +52,7 @@ adminOnly(); //Redirect any user who is not an admin
                     <tbody>
                         <?php foreach ($users as $key => $user): ?>
                         <tr>
-                            <td><?php echo $key + 1; ?></td>
+                            <td><?php echo $user['id']; ?></td>
                             <td><?php echo $user['username']; ?></td>
                             <td><?php echo $user['email']; ?></td>
                             <?php if ($user['admin'] == 1): ?>
