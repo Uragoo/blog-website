@@ -207,12 +207,22 @@ function getPopularPosts() {
     
 }
 
-//function that fetch in the database all published posts order by the recent ones to the olders
+//function that fetches in the database all published posts ordered from most recent to oldest
 function getRecentPosts() {
     global $connection;
     $sql = "SELECT p.*, u.username FROM posts AS p JOIN users AS u ON p.user_id = u.id WHERE p.published = ? ORDER BY p.creation_date DESC";
 
     $query = executeQuery($sql, ['published' => 1]);
+    $results = $query->get_result()->fetch_all(MYSQL_ASSOC); // Fetching all the results of the query
+    return $results;
+}
+
+//function that fetches the Author's name according to the post
+function getPostAuthor($id){
+    global $connection;
+    $sql = "SELECT u.username FROM users AS u";
+
+    $query = executeQuery($sql, [u.username == $id]);
     $results = $query->get_result()->fetch_all(MYSQL_ASSOC); // Fetching all the results of the query
     return $results;
 }
