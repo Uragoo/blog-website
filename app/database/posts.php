@@ -72,7 +72,7 @@ if (isset($_POST['create-post'])) {
     
 }
 
-////Update the selected post in the database when there is a GET id attribute
+//Update the selected post in the database when there is a GET id attribute
 if (isset($_GET['id'])) {
     $post = selectOne($table, ['id' => $_GET['id']]); //Fetch the post corresponding to the post id
     $id = $post['id'];
@@ -138,7 +138,7 @@ if (isset($_POST['update-post'])) {
     }
 }
 
-////Delete the selected post from the database when there is a GET delete_id attribute
+//Delete the selected post from the database when there is a GET delete_id attribute
 if (isset($_GET['delete_id'])) {
     adminOnly(); //Redirect any user who is not an admin
     $count = deleteRow($table, $_GET['delete_id']);
@@ -148,7 +148,7 @@ if (isset($_GET['delete_id'])) {
     exit();   
 }
 
-////Publish or unpublish the selected post when there is a GET published and post_id attribute
+//Publish or unpublish the selected post when there is a GET published and post_id attribute
 if (isset($_GET['published']) && isset($_GET['post_id'])) {
     adminOnly(); //Redirect any user who is not an admin
     $published = $_GET['published'];

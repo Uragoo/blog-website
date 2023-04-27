@@ -16,7 +16,7 @@ html, body {
 	width: 80%;
 	border-width: 0px 0px; 
 	border-style: solid; 
-	border-color:rgb(28, 68, 35);;
+	border-color:rgb(28, 68, 35);
 	padding: 0px 0px;
 	background-color:rgba(255, 255, 255, 0.753);
 }
@@ -24,9 +24,19 @@ h1, h2, h3, h4 {
     font-family: 'Merriweather', serif;
     margin: 5px;
 }
+h1 {
+    text-align: center;
+}
 a {
     text-decoration: none;
     color: inherit;
+}
+.p_about {
+    color: black;
+	font-family: Verdana;
+	font-size: 16px;
+	text-align: justify;
+	margin: 10px 10%;
 }
 .button {
     padding: .5rem 1rem;
@@ -590,6 +600,52 @@ header .menu-icon {
     .authentication {
         width: 90%;
     }
+}
+
+/**
+*Propreties regarding a table of pictures. There are 3 pictures per row.
+*/
+.pic_table img{
+	opacity: 1;
+	width: 300px;
+	height: auto;
+	transition: .5s ease;
+	backface-visibility: hidden;
+}
+.pic_table img:hover{
+	opacity: 0.3;
+}
+.column_pic{
+	float: auto;
+	width: 33.33%;
+	padding: 5px;
+}
+.row_pic{
+	text-align: center;
+	margin-top: 30px;
+}
+.row_pic::after{
+	content: "";
+	clear: both;
+	display: table;
+}
+.pic_table img.center{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+.pic_table a:link {
+	font-size:1.2em;
+	font-weight:bold;
+	text-decoration:none;
+}
+.pic_table a:hover {
+	font-size: 1.2em;
+	font-weight: bold;
+	color: rgb(129, 182, 252);
+	text-decoration: none;
 }
 
 /**

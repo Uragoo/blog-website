@@ -2,6 +2,7 @@
 <?php 
 include("../../path.php"); 
 include(ROOT_PATH . "/app/database/posts.php");
+
 adminOnly(); //Redirect any user who is not an admin
 ?>
 <!DOCTYPE html>
@@ -46,7 +47,7 @@ adminOnly(); //Redirect any user who is not an admin
                     <thead>
                         <th>N°</th>
                         <th>Title</th>
-                        <th>Author</th>
+                        <th>Author ID</th>
                         <th colspan="3">Action</th>
                     </thead>
                     <tbody>
@@ -56,7 +57,7 @@ adminOnly(); //Redirect any user who is not an admin
                                 <td><a href="<?php echo BASE_URL . '/post.php?id=' . $post['id']; ?>" class="post-link">
                                     <?php echo $post['title']; ?>
                                 </a></td>
-                                <td>Théo</td>
+                                <td><?php echo $post['user_id']; ?></td>
                                 <td><a href="edit.php?id=<?php echo $post['id']; ?> " class="button edit">Edit</a></td>
                                 <td><a href="edit.php?delete_id=<?php echo $post['id']; ?>" class="button delete">Delete</a></td>
                                 <!-- Publish or unpublish the specified post -->
