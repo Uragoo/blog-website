@@ -2,10 +2,17 @@
 -- version 4.5.4.1
 -- http://www.phpmyadmin.net
 --
+<<<<<<< HEAD
 -- Client :  localhost
 -- Généré le :  Mer 26 Avril 2023 à 17:22
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.18
+=======
+-- Host: localhost
+-- Generation Time: Apr 26, 2023 at 11:33 AM
+-- Server version: 5.7.11
+-- PHP Version: 5.6.18
+>>>>>>> e9d623e3ac51b0a7b812f1a213e283d1a83eb984
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +24,21 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
+<<<<<<< HEAD
 -- Base de données :  `ghiblog`
+=======
+-- Database: `ghiblog`
+>>>>>>> e9d623e3ac51b0a7b812f1a213e283d1a83eb984
 --
 
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Structure de la table `likes`
+=======
+-- Table structure for table `likes`
+>>>>>>> e9d623e3ac51b0a7b812f1a213e283d1a83eb984
 --
 
 CREATE TABLE `likes` (
@@ -33,7 +48,11 @@ CREATE TABLE `likes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+<<<<<<< HEAD
 -- Contenu de la table `likes`
+=======
+-- Dumping data for table `likes`
+>>>>>>> e9d623e3ac51b0a7b812f1a213e283d1a83eb984
 --
 
 INSERT INTO `likes` (`id`, `post_id`, `user_id`) VALUES
@@ -60,7 +79,11 @@ INSERT INTO `likes` (`id`, `post_id`, `user_id`) VALUES
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Structure de la table `posts`
+=======
+-- Table structure for table `posts`
+>>>>>>> e9d623e3ac51b0a7b812f1a213e283d1a83eb984
 --
 
 CREATE TABLE `posts` (
@@ -76,7 +99,11 @@ CREATE TABLE `posts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+<<<<<<< HEAD
 -- Contenu de la table `posts`
+=======
+-- Dumping data for table `posts`
+>>>>>>> e9d623e3ac51b0a7b812f1a213e283d1a83eb984
 --
 
 INSERT INTO `posts` (`id`, `user_id`, `topic_id`, `title`, `image`, `body`, `likes`, `published`, `creation_date`) VALUES
@@ -94,7 +121,11 @@ INSERT INTO `posts` (`id`, `user_id`, `topic_id`, `title`, `image`, `body`, `lik
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Structure de la table `topics`
+=======
+-- Table structure for table `topics`
+>>>>>>> e9d623e3ac51b0a7b812f1a213e283d1a83eb984
 --
 
 CREATE TABLE `topics` (
@@ -104,19 +135,31 @@ CREATE TABLE `topics` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+<<<<<<< HEAD
 -- Contenu de la table `topics`
+=======
+-- Dumping data for table `topics`
+>>>>>>> e9d623e3ac51b0a7b812f1a213e283d1a83eb984
 --
 
 INSERT INTO `topics` (`id`, `name`, `description`) VALUES
 (2, 'Film Review', '&lt;p&gt;Posts that contains film reviewss&lt;/p&gt;'),
 (3, 'News', '&lt;p&gt;Posts that contains news.&lt;/p&gt;'),
+<<<<<<< HEAD
 (4, 'Soundtracks', '&lt;p&gt;Post about film soundtracks&lt;/p&gt;'),
 (5, 'Trailers', '&lt;p&gt;Posts containing teasers or trailers&lt;/p&gt;');
+=======
+(4, 'Soundtracks', '&lt;p&gt;Post about film soundtracks&lt;/p&gt;');
+>>>>>>> e9d623e3ac51b0a7b812f1a213e283d1a83eb984
 
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Structure de la table `users`
+=======
+-- Table structure for table `users`
+>>>>>>> e9d623e3ac51b0a7b812f1a213e283d1a83eb984
 --
 
 CREATE TABLE `users` (
@@ -129,7 +172,11 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
+<<<<<<< HEAD
 -- Contenu de la table `users`
+=======
+-- Dumping data for table `users`
+>>>>>>> e9d623e3ac51b0a7b812f1a213e283d1a83eb984
 --
 
 INSERT INTO `users` (`id`, `admin`, `username`, `email`, `password`, `creation_date`) VALUES
@@ -140,11 +187,19 @@ INSERT INTO `users` (`id`, `admin`, `username`, `email`, `password`, `creation_d
 (13, 0, 'Marco', 'marcojacobo@ghibli.com', '$2y$10$jCqKe0TmXrJAdJeC7gamVODF85F4DzPpuSSuT7kmLFOnWn6bpbmQy', '2023-04-26 11:12:06');
 
 --
+<<<<<<< HEAD
 -- Index pour les tables exportées
 --
 
 --
 -- Index pour la table `likes`
+=======
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `likes`
+>>>>>>> e9d623e3ac51b0a7b812f1a213e283d1a83eb984
 --
 ALTER TABLE `likes`
   ADD PRIMARY KEY (`id`),
@@ -152,7 +207,11 @@ ALTER TABLE `likes`
   ADD KEY `user_id` (`user_id`);
 
 --
+<<<<<<< HEAD
 -- Index pour la table `posts`
+=======
+-- Indexes for table `posts`
+>>>>>>> e9d623e3ac51b0a7b812f1a213e283d1a83eb984
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`),
@@ -160,56 +219,97 @@ ALTER TABLE `posts`
   ADD KEY `topic_id` (`topic_id`);
 
 --
+<<<<<<< HEAD
 -- Index pour la table `topics`
+=======
+-- Indexes for table `topics`
+>>>>>>> e9d623e3ac51b0a7b812f1a213e283d1a83eb984
 --
 ALTER TABLE `topics`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`);
 
 --
+<<<<<<< HEAD
 -- Index pour la table `users`
+=======
+-- Indexes for table `users`
+>>>>>>> e9d623e3ac51b0a7b812f1a213e283d1a83eb984
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
+<<<<<<< HEAD
 -- AUTO_INCREMENT pour les tables exportées
 --
 
 --
 -- AUTO_INCREMENT pour la table `likes`
+=======
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `likes`
+>>>>>>> e9d623e3ac51b0a7b812f1a213e283d1a83eb984
 --
 ALTER TABLE `likes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
+<<<<<<< HEAD
 -- AUTO_INCREMENT pour la table `posts`
+=======
+-- AUTO_INCREMENT for table `posts`
+>>>>>>> e9d623e3ac51b0a7b812f1a213e283d1a83eb984
 --
 ALTER TABLE `posts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
+<<<<<<< HEAD
 -- AUTO_INCREMENT pour la table `topics`
 --
 ALTER TABLE `topics`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT pour la table `users`
+=======
+-- AUTO_INCREMENT for table `topics`
+--
+ALTER TABLE `topics`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `users`
+>>>>>>> e9d623e3ac51b0a7b812f1a213e283d1a83eb984
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
+<<<<<<< HEAD
 -- Contraintes pour les tables exportées
 --
 
 --
 -- Contraintes pour la table `likes`
+=======
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `likes`
+>>>>>>> e9d623e3ac51b0a7b812f1a213e283d1a83eb984
 --
 ALTER TABLE `likes`
   ADD CONSTRAINT `likes_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `likes_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
+<<<<<<< HEAD
 -- Contraintes pour la table `posts`
+=======
+-- Constraints for table `posts`
+>>>>>>> e9d623e3ac51b0a7b812f1a213e283d1a83eb984
 --
 ALTER TABLE `posts`
   ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;

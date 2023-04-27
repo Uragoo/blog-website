@@ -15,7 +15,10 @@ We tested the website on Microsoft Edge [On PC]
 
 # Things to watch out for
 When you choose to edit a blog post you will need to reupload the image. When liking a blog post you can only like it when you're on the home page, it won't work if you're on the post's page
+<<<<<<< HEAD
 
 # Enjoy our work !
 Feel free to explore all the fonctionalities such as the search bar, the topics or the like system
 We really enjoyed working on this project so we hope you'll enjoy it as much we do !
+=======
+>>>>>>> e9d623e3ac51b0a7b812f1a213e283d1a83eb984
